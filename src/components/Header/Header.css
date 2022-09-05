@@ -1,0 +1,8 @@
+header{
+    grid-area: h;  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: red;
+    
+}
