@@ -1,0 +1,19 @@
+.sideBar{
+    grid-area: s;
+    width: 100px;
+    background-color: gray;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.category{
+    text-decoration: none;
+    color: black;
+    list-style: none;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.active{
+    color: red;
+}
