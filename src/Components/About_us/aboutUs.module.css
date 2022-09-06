@@ -1,0 +1,23 @@
+.AboutUs {
+    font-family: "Arial", serif;
+    height: 100%;
+    width: calc(100% - 30px);
+    background: white;
+    padding: 5px 15px;
+    color: teal;
+    border: 1px solid teal;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.div1, .div2 {
+    width: calc(33% - 16px);
+    padding: 10px 8px;
+}.h2 {
+
+     margin: 0;
+     padding: 10px 0;
+     height: 20px;
+     width: 100%;
+     font-variant: small-caps;
+ }
