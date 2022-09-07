@@ -1,35 +1,39 @@
-import { Routes, Route, Link,} from "react-router-dom";
+import { Routes, Route, Link, } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import AboutUs from "./Components/About_us/AboutUs";
+import Main from './Components/Main/Main';
 import FirstPage from "./Components/Pages/firstPage";
-import SecondPage  from "./Components/Pages/secondPage";
-import ThirdPage  from "./Components/Pages/thirdPage";
-import  NotFoundPage from "./Components/Pages/notFoundPage";
+import SecondPage from "./Components/Pages/secondPage";
+import ThirdPage from "./Components/Pages/thirdPage";
+import NotFoundPage from "./Components/Pages/notFoundPage";
 import FourthPage from "./Components/Pages/fourthPage";
 import React from "react";
 
 function App() {
+  const dispatch = useDispatch()
+  const count = useSelector(state => state.products.count)
   return (
     <div className="App">
       <header className="App-header">
 
-          <Link className="Link" to="/firstPage">1</Link>
-          <Link className="Link" to="/secondPage">2</Link>
-          <Link className="Link" to="/thirdPage">3</Link>
-          <Link className="Link" to="/fourthPage">4</Link>
+        <Link className="Link" to="/firstPage">1</Link>
+        <Link className="Link" to="/secondPage">2</Link>
+        <Link className="Link" to="/thirdPage">3</Link>
+        <Link className="Link" to="/fourthPage">4</Link>
       </header>
-          <Routes>
-              <Route path="/" >home</Route>
-              <Route path="/FirstPage" element={<FirstPage/>}></Route>
-              <Route path="/SecondPage" element={<SecondPage/>}></Route>
-              <Route path="/ThirdPage" element={<ThirdPage/>}></Route>
-              <Route path="/fourthPage" element={<FourthPage/>}></Route>
-              <Route path="*" element={<NotFoundPage/>}></Route>
-          </Routes>
+      <Routes>
+        <Route path="/" >home</Route>
+        <Route path="/FirstPage" element={<FirstPage />}></Route>
+        <Route path="/SecondPage" element={<SecondPage />}></Route>
+        <Route path="/ThirdPage" element={<ThirdPage />}></Route>
+        <Route path="/fourthPage" element={<FourthPage />}></Route>
+        <Route path="*" element={<NotFoundPage />}></Route>
+      </Routes>
 
 
 
-        <footer><AboutUs/></footer>
+      <footer><AboutUs /></footer>
     </div>
   );
 }
