@@ -1,0 +1,26 @@
+.pages{
+  background-color: red;
+}
+
+body{
+  background-color: #282c34;
+  color: white;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+}
+
+.User-info{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.User-name{
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+  font-size: xx-large;
+}
