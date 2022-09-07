@@ -8,7 +8,7 @@ const MyOffice = () => {
     <div className='Main'>
       {/* Modal_Window */}
       <Modal active={modalActive} setActive={setModalActive}></Modal>
-      {/* Else */}git branch -M main
+      {/* Else */}
         <div className='pages'><button onClick={() => setModalActive(true)}>Зарегестрироватся </button></div>
         <div className='User-info'>
           <img src='https://citaty.info/files/no_avatar.png' height={"200px"} width={"200px"} alt='Avatarka'></img>
