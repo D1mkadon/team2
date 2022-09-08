@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./Modal.css"
-import "../styles.css"
+import classes from "../styles.module.css"
 const Modal = ({active, setActive}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -95,20 +95,20 @@ const Modal = ({active, setActive}) => {
     <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
         <div className={active ? "modal_content active" : "modal_content"} onClick={e => e.stopPropagation()}>
         <form >
-                  <h1 className="test">Регистрация</h1>
-                  {(emailDirty && emailError) && <div className="red">{emailError}</div>}
+                  <h1 className={classes.test}>Регистрация</h1>
+                  {(emailDirty && emailError) && <div className={classes.red}>{emailError}</div>}
                   <input value={email} onChange={(e)=>emailHandler(e)} onBlur={(e) => onBlurHandler(e)} name='email' type="text" placeholder='Введите свой email'/>
 
-                  {(passwordDirty && passwordError) && <div className="red">{passwordError}</div>}
+                  {(passwordDirty && passwordError) && <div className={classes.red}>{passwordError}</div>}
                   <input value={password} onChange={(e)=>passwordHandler(e)} onBlur={(e) => onBlurHandler(e)}  name='password' type="password" placeholder='Введите свой пароль'/>
 
-                  {(nameDirty && nameError) && <div className="red">{nameError}</div>}
+                  {(nameDirty && nameError) && <div className={classes.red}>{nameError}</div>}
                   <input value={name} onChange={(e)=>nameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='name' type="text" placeholder='Введите свое имя'/>
 
-                  {(surnameDirty && surnameError) && <div className="red">{surnameError}</div>}
+                  {(surnameDirty && surnameError) && <div className={classes.red}>{surnameError}</div>}
                   <input value={surname} onChange={(e)=>surnameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='surname' type="text" placeholder='Введите свою фамилию'/>
 
-                  <button className="submit" disabled={!formValid} type='submit'>Регистрация</button>
+                  <button className={classes.submit} disabled={!formValid} type='submit'>Регистрация</button>
             </form>
         </div>
     </div>

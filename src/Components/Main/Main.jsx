@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../actions/products';
-import "./Main.css"
+import classes from "./Main.module.css"
 import Product from "./Product/Product"
 
 const Main = () => {
@@ -17,7 +17,7 @@ const Main = () => {
         dispatch(getProducts(searchValue))
     }
     return (
-        <div className='main'>
+        <div className={classes.main}>
             <div>
                 <input value={searchValue} onChange={(e)=>setSearchValue(e.target.value)} type='text' placeholder='Search...' className='search-input'/>
                 <button onClick={()=>SearchHandle()} className='search-buton'>Search</button>
@@ -27,7 +27,7 @@ const Main = () => {
                 ?
             products.map(prod=><Product key={prod.id} prod={prod }/>)         
                 :
-                <div className='fetching'>
+                <div className={classes.fetching}>
 
                 </div>
             }

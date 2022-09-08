@@ -1,12 +1,12 @@
 import React from 'react';
-import './Product.css';
+import classes from './Product.module.css';
 const product = (props) => {
     const prod = props.prod
     return (
-        <div key={prod.id} className='item-content'>
+        <div key={prod.id} className={classes.itemContent}>
             <div>{prod.title}</div>
             <div>{prod.price}</div>
-            <img className='product-img' src={prod.image} />
+            <img className={classes.productImg} src={prod.image} />
         </div>
     );
 };

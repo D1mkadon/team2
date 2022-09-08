@@ -19,7 +19,7 @@ function App() {
         <Link className="Link" to="/Main">Main</Link>
         <Link className="Link" to="/MyOffice">MyOffice</Link>
         <Link className="Link" to="/thirdPage">3</Link>
-        <Link className="Link" to="/fourthPage">4</Link>
+        <Link className="Link" to="/AboutUs">AboutUs</Link>
       </header>
 
       <Routes>
@@ -27,13 +27,13 @@ function App() {
         <Route path="/Main" element={<Main />}></Route>
         <Route path="/MyOffice" element={<MyOffice />}></Route>
         <Route path="/ThirdPage" element={<ThirdPage />}></Route>
-        <Route path="/fourthPage" element={<FourthPage />}></Route>
+        <Route path="/AboutUs" element={<AboutUs />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
 
 
 
-      <footer><AboutUs /></footer>
+
     </div >
   );
 }

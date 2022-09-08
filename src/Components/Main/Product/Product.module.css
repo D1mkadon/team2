@@ -1,4 +1,4 @@
-.item-content{
+.itemContent{
     width: 150px;
     display: flex;
     flex-direction: column;
@@ -11,6 +11,6 @@
     
 
 }
-.product-img{
+.productImg{
     width: 100px;
 }
