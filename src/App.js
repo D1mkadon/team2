@@ -10,8 +10,6 @@ import React from "react";
 import MyOffice from './Components/MyOffice/MyOffice';
 import Main from './Components/Main/Main';
 function App() {
-  const dispatch = useDispatch()
-  const count = useSelector(state => state.products.count)
   return (
     <div className="App">
       <header className="App-header">
