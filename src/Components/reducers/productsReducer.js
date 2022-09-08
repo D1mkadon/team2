@@ -1,9 +1,13 @@
 const SET_PRODUCTS = "SET_PRODUCTS"
 const SET_IS_FETCH = "SET_IS_FETCH"
+const SET_SEARCHVALUE = "SET_SEARCHVALUE"
+const SET_PRODUCT_ID = "SET_PRODUCT_ID"
 
 const defaulStore = {
     item: [],
+    searchValue: [],
     isFetching: true,
+    productId : 0
 }
 
 export default function productsReducer(state = defaulStore, action) {
@@ -18,6 +22,17 @@ export default function productsReducer(state = defaulStore, action) {
             return {
                 ...state,
                 isFetching: action.payload
+            }
+        case SET_SEARCHVALUE:
+            return {
+                ...state,
+                searchValue: action.payload
+            }
+        case SET_PRODUCT_ID:
+            return {
+                ...state,
+                productId: action.payload
+                
             }
 
         default:
@@ -34,6 +49,16 @@ export const setProducts = (products) => ({
 export const setIsFetching = (bool) => ({
     type: SET_IS_FETCH,
     payload: bool
+
+})
+export const setSearchValue = (text) => ({
+    type: SET_SEARCHVALUE,
+    payload: text
+
+})
+export const setProductId = (id) => ({
+    type: SET_PRODUCT_ID,
+    payload: id
 
 })
 

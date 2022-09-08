@@ -1,0 +1,41 @@
+.singleProductWrapper{
+    display: grid;
+    margin-bottom: 30px;
+    width: 100%;
+    height: fit-content;
+    grid-template-areas: "head  head"
+                         "rate  id"
+                         "foto  price"
+                         "desc  price";
+    grid-template-rows: 100px 50px 1fr 200px;
+    grid-template-columns: 1fr 1fr ;
+}
+
+.headSP{
+    grid-area: head;
+    background-color: aqua;
+}
+.rateSP{
+    grid-area: rate;
+    background-color: rgb(118, 156, 156);
+}
+.idSP{
+    grid-area: id;
+    background-color: rgb(12, 29, 29);
+
+}
+.fotoSP{
+    grid-area: foto;
+    background-color: rgb(104, 126, 63)166, 255, 0);
+}
+.fotoSP >img{
+    width: 200px;
+}
+.descSP{
+    grid-area: desc;
+    background-color: rgb(255, 255, 255);
+}
+.priceSP{
+    grid-area: price;
+    background-color: rgb(70, 38, 214);
+}

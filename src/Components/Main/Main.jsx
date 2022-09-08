@@ -1,31 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../actions/products';
+import { setSearchValue,setIsFetching, setProducts } from "../reducers/productsReducer";
+import ListPage from './ListPage/ListPage';
 import "./Main.css"
-import Product from "./Product/Product"
+import SearchBar from './SearchBar/SearchBar';
 
 const Main = () => {
     const dispatch = useDispatch()
-    const products = useSelector(state=> state.products.item)
     const isFetching = useSelector(state=> state.products.isFetching)
-    const [searchValue, setSearchValue] = useState("")
+
 
     useEffect(()=>{
-        dispatch(getProducts())
+        getProducts()
+        .then(json=>{
+            dispatch(setIsFetching(true))
+            dispatch(setProducts(json))
+            return json
+        }).then(json=>{
+            dispatch(setSearchValue(json))
+        })
     },[])
-    function SearchHandle(){
-        dispatch(getProducts(searchValue))
-    }
+ 
     return (
         <div className='main'>
-            <div>
-                <input value={searchValue} onChange={(e)=>setSearchValue(e.target.value)} type='text' placeholder='Search...' className='search-input'/>
-                <button onClick={()=>SearchHandle()} className='search-buton'>Search</button>
-            </div>
+            <SearchBar/>
             {
                 isFetching ===false 
                 ?
-            products.map(prod=><Product key={prod.id} prod={prod }/>)         
+                <ListPage/>       
                 :
                 <div className='fetching'>
 
