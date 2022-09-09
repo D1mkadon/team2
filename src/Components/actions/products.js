@@ -9,6 +9,11 @@ export const getProducts = async () => {
     return response.data
 
 }
+export const getSingleProducts = async (id) => {
+    const response = await api.get(`/products/${id}`)
+    return response.data
+
+}
 
 // export const getProducts = (product) => {
 //     return async (dispatch) => {

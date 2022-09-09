@@ -1,21 +1,35 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { FaCartPlus } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { getSingleProducts } from '../../actions/products';
+import { setCurrentProduct } from '../../reducers/productsReducer';
 import "./SingleProductPage.css"
+
 const SingleProductPage = () => {
-    const productId = useSelector(state=>state.products.productId)
-    const productsArr = useSelector(state=>state.products.item)
-    const currentProduct = productsArr.find(item => item.id == productId);
-// sp - single product
+    const {id} = useParams()
+    const dispatch = useDispatch()
+    // sp - single product
+    console.log(id);
+    useEffect(()=>{
+        getSingleProducts(id)
+        .then(json=>{
+            dispatch(setCurrentProduct(json))
+        })
+    },[])
+    const currentProduct = useSelector(state=> state.products.currentProduct)
+    console.log(currentProduct);
     return (
         <div className='singleProductWrapper'>
             <div className='headSP'>{currentProduct.title}</div>
-            <div className='rateSP'>{currentProduct.rating.rate}</div>
-            <div className='idSP'>{currentProduct.id}</div>
             <div className='foroSP'>
-                <img src={`${currentProduct.image}`} />
+                <img className='fotoSP-img' src={`${currentProduct.image}`} />
             </div>
-            <div className='descSp'>{currentProduct.description}</div>
-            <div className='priceSP'>{currentProduct.price}</div>
+            <div className='descSP'>{currentProduct.title} - {currentProduct.description}</div>
+            <div className='priceSP'>
+                <div>{currentProduct.price}<span>$</span></div>
+                <button><FaCartPlus/>Add to cart </button>    
+            </div> 
             
             
         </div>

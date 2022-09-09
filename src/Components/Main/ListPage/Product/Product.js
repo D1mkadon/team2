@@ -1,11 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import './Product.css';
-import { setProductId } from '../../../reducers/productsReducer';
 const Product = ({ prod }) => {
-    const dispatch = useDispatch()
     return (
-        <div key={prod.id} className='item-content' onClick={() => dispatch(setProductId(prod.id))} >
+        <div key={prod.id} className='item-content' >
             <div className='img-wrapper'>
                 <img className='product-img' src={prod.image} />
             </div>

@@ -20,8 +20,8 @@ const ListPage = () => {
              {
                
                  temp.map(product=>
-                    <Link to={`/product/${product.id}`}>
-                        <Product key={product.id} prod={product}/>
+                    <Link key={product.id} to={`/product/${product.id}`}>
+                        <Product prod={product}/>
                     </Link>
                 )
                

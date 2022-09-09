@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <header className="App-header">
 
-        <Link className="Link" to="/Main">Main</Link>
+        <Link className="Link" to="/">Main</Link>
         <Link className="Link" to="/MyOffice">MyOffice</Link>
         <Link className="Link" to="/thirdPage">3</Link>
         <Link className="Link" to="/fourthPage">4</Link>
