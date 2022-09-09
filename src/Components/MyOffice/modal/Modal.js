@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import "./Modal.css"
-import classes from "../styles.module.css"
-const Modal = ({active, setActive}) => {
+import "../styles.css"
+import { useDispatch } from 'react-redux';
+import { setMainName, setMainSurname } from '../../reducers/authDataReducer';
+const Modal = ({ active, setActive }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailDirty, setEmailDirty] = useState(false);
@@ -10,107 +12,116 @@ const Modal = ({active, setActive}) => {
   const [passwordError, setPasswordError] = useState('Пароль не может быть пустым');
   const [formValid, setFormValid] = useState(false);
 
-  const[name, setName] = useState("");
-  const[surname, setSurname] = useState('');
-  const[nameDirty, setNameDirty] = useState(false);
-  const[surnameDirty, setSurnameDirty] = useState(false);
-  const[nameError, setNameError] = useState("Имя неможет быть пустым");
-  const[surnameError, setSurnameError] = useState("Фамилия не может быть пустая");
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState('');
+  const [nameDirty, setNameDirty] = useState(false);
+  const [surnameDirty, setSurnameDirty] = useState(false);
+  const [nameError, setNameError] = useState("Имя неможет быть пустым");
+  const [surnameError, setSurnameError] = useState("Фамилия не может быть пустая");
 
-  const onBlurHandler = (e) =>{
-    switch(e.target.name) {
+  const dispatch = useDispatch()
+
+  const onBlurHandler = (e) => {
+    switch (e.target.name) {
       case 'email':
         setEmailDirty(true);
         break;
 
-        case 'password':
+      case 'password':
         setPasswordDirty(true);
         break;
 
-        case 'name':
+      case 'name':
         setNameDirty(true);
         break;
 
-        case 'surname':
+      case 'surname':
         setSurnameDirty(true);
         break;
     };
   };
 
-  const emailHandler = (e) =>{
+  const emailHandler = (e) => {
     setEmail(e.target.value);
     const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    if(!re.test(String(e.target.value).toLowerCase())){
+    if (!re.test(String(e.target.value).toLowerCase())) {
       setEmailError('Некорректный емейл');
-    }else{
+    } else {
       setEmailError('');
     };
   };
 
-  const passwordHandler = (e) =>{
+  const passwordHandler = (e) => {
     setPassword(e.target.value);
-    if(e.target.value.length < 5 || e.target.value.length > 12){
+    if (e.target.value.length < 5 || e.target.value.length > 12) {
       setPasswordError('Пароль должен быть длиннее 4 и меньше 12');
-      if(!e.target.value){
+      if (!e.target.value) {
         setPasswordError('Пароль не может быть пустым')
       };
-    } else{
+    } else {
       setPasswordError('')
     };
   };
 
-  const surnameHandler = (e) =>{
+  const surnameHandler = (e) => {
     setSurname(e.target.value);
-    if(e.target.value.length < 0){
+    if (e.target.value.length < 0) {
       setNameError('Фамилия не может быть пустая');
-      if(!e.target.value){
+      if (!e.target.value) {
         setSurnameError('Фамилия не может быть пустая')
       };
-    } else{
+    } else {
       setSurnameError('')
     };
   };
 
-  const nameHandler = (e) =>{
+  const nameHandler = (e) => {
     setName(e.target.value);
-    if(e.target.value.length < 0){
+    if (e.target.value.length < 0) {
       setNameError('Имя неможет быть пустым');
-      if(!e.target.value){
+      if (!e.target.value) {
         setNameError('Имя неможет быть пустым')
       };
-    } else{
+    } else {
       setNameError('')
     };
   };
+  const preventHandler = (e) => {
+    e.preventDefault()
+  }
+  function setNameAndSurname(name1, surname1) {
+    dispatch(setMainName(name1));
+    dispatch(setMainSurname(surname1));
+  }
 
 
-  useEffect(()=>{
-    if(emailError || passwordError || nameError || surnameError){
+  useEffect(() => {
+    if (emailError || passwordError || nameError || surnameError) {
       setFormValid(false);
-    } else{
+    } else {
       setFormValid(true);
     };
-  }, [emailError, passwordError, nameError, surname]);
+  }, [emailError, passwordError, nameError, surnameError]);
   return (
     <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
-        <div className={active ? "modal_content active" : "modal_content"} onClick={e => e.stopPropagation()}>
-        <form >
-                  <h1 className={classes.test}>Регистрация</h1>
-                  {(emailDirty && emailError) && <div className={classes.red}>{emailError}</div>}
-                  <input value={email} onChange={(e)=>emailHandler(e)} onBlur={(e) => onBlurHandler(e)} name='email' type="text" placeholder='Введите свой email'/>
+      <div className={active ? "modal_content active" : "modal_content"} onClick={e => e.stopPropagation()}>
+        <form onClick={(e) => preventHandler(e)} >
+          <h1 className="test">Регистрация</h1>
+          {(emailDirty && emailError) && <div className="red">{emailError}</div>}
+          <input value={email} onChange={(e) => emailHandler(e)} onBlur={(e) => onBlurHandler(e)} name='email' type="text" placeholder='Введите свой email' />
 
-                  {(passwordDirty && passwordError) && <div className={classes.red}>{passwordError}</div>}
-                  <input value={password} onChange={(e)=>passwordHandler(e)} onBlur={(e) => onBlurHandler(e)}  name='password' type="password" placeholder='Введите свой пароль'/>
+          {(passwordDirty && passwordError) && <div className="red">{passwordError}</div>}
+          <input value={password} onChange={(e) => passwordHandler(e)} onBlur={(e) => onBlurHandler(e)} name='password' type="password" placeholder='Введите свой пароль' />
 
-                  {(nameDirty && nameError) && <div className={classes.red}>{nameError}</div>}
-                  <input value={name} onChange={(e)=>nameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='name' type="text" placeholder='Введите свое имя'/>
+          {(nameDirty && nameError) && <div className="red">{nameError}</div>}
+          <input value={name} onChange={(e) => nameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='name' type="text" placeholder='Введите свое имя' />
 
-                  {(surnameDirty && surnameError) && <div className={classes.red}>{surnameError}</div>}
-                  <input value={surname} onChange={(e)=>surnameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='surname' type="text" placeholder='Введите свою фамилию'/>
+          {(surnameDirty && surnameError) && <div className="red">{surnameError}</div>}
+          <input value={surname} onChange={(e) => surnameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='surname' type="text" placeholder='Введите свою фамилию' />
 
-                  <button className={classes.submit} disabled={!formValid} type='submit'>Регистрация</button>
-            </form>
-        </div>
+          <button onClick={() => setNameAndSurname(name, surname)} className="submit" disabled={!formValid} type='submit'>Регистрация</button>
+        </form>
+      </div>
     </div>
   );
 };

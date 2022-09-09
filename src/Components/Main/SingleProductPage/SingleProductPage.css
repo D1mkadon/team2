@@ -1,0 +1,66 @@
+.singleProductWrapper{
+    display: grid;
+    margin-bottom: 30px;
+    height: fit-content;
+    grid-template-areas: "head  head"
+                         "foto  price"
+                         "foto  desc";
+    grid-template-rows: 70px 1fr 200px;
+    grid-template-columns: 1fr 1fr ;
+    background-color: white;
+    color: #191c20;
+    padding: 20px ;
+}
+
+.headSP{
+    grid-area: head;
+    font-size: 30px;
+    text-align: center;
+    border-bottom: 1px solid #000;
+}
+
+.foroSP{
+    grid-area: foto;
+    scale: 0.7;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fotoSP-img{
+    width: 300px;
+}
+.fotoSP-img:hover{
+    scale: 1.3;
+}
+
+.descSP{
+    grid-area: desc;
+    line-height: 30px;
+    letter-spacing: 1px;
+    text-align: justify;
+}
+.priceSP{
+    grid-area: price;
+    display: flex;
+    align-items: center;
+    font-size: 33px;
+    color: rgb(78, 35, 14);
+    
+}
+.priceSP>div>span{
+    font-size: 20px;
+}
+.priceSP>button{
+    margin-left: 30px;
+    width: fit-content;
+    height: 40px;
+    background-color: #191c20;
+    color: rgb(124, 221, 221);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+
+}
