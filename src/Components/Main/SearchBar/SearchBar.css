@@ -1,0 +1,20 @@
+.searchBar-form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.searchBar-input{
+    width: 500px;
+    border-radius: 20px;
+    border: none;
+    padding: 7px;
+}
+.search-button{
+    background-color: #282c34;
+    border: none;
+    color: aliceblue;
+    margin: 3px 0 0 0;
+    padding: 0;
+}

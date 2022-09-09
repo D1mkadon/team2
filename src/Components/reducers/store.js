@@ -3,6 +3,7 @@ import productsReducer from './productsReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import authDataReducer from './authDataReducer';
+
 const rootReducer = combineReducers({
     products: productsReducer,
     authData: authDataReducer
