@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./Modal.css"
-import "../styles.css"
+import style from "../styles.module.css"
 import { useDispatch } from 'react-redux';
 import { setMainName, setMainSurname } from '../../reducers/authDataReducer';
 const Modal = ({ active, setActive }) => {
@@ -107,19 +107,19 @@ const Modal = ({ active, setActive }) => {
       <div className={active ? "modal_content active" : "modal_content"} onClick={e => e.stopPropagation()}>
         <form onClick={(e) => preventHandler(e)} >
           <h1 className="test">Регистрация</h1>
-          {(emailDirty && emailError) && <div className="red">{emailError}</div>}
+          {(emailDirty && emailError) && <div className={style.red}>{emailError}</div>}
           <input value={email} onChange={(e) => emailHandler(e)} onBlur={(e) => onBlurHandler(e)} name='email' type="text" placeholder='Введите свой email' />
 
-          {(passwordDirty && passwordError) && <div className="red">{passwordError}</div>}
+          {(passwordDirty && passwordError) && <div className={style.red}>{passwordError}</div>}
           <input value={password} onChange={(e) => passwordHandler(e)} onBlur={(e) => onBlurHandler(e)} name='password' type="password" placeholder='Введите свой пароль' />
 
           {(nameDirty && nameError) && <div className="red">{nameError}</div>}
           <input value={name} onChange={(e) => nameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='name' type="text" placeholder='Введите свое имя' />
 
-          {(surnameDirty && surnameError) && <div className="red">{surnameError}</div>}
+          {(surnameDirty && surnameError) && <div className={style.red}>{surnameError}</div>}
           <input value={surname} onChange={(e) => surnameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='surname' type="text" placeholder='Введите свою фамилию' />
 
-          <button onClick={() => setNameAndSurname(name, surname)} className="submit" disabled={!formValid} type='submit'>Регистрация</button>
+          <button onClick={() => setNameAndSurname(name, surname)} className={style.submit} disabled={!formValid} type='submit'>Регистрация</button>
         </form>
       </div>
     </div>

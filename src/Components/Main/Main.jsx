@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../actions/products';
 import { setSearchValue,setIsFetching, setProducts } from "../reducers/productsReducer";
 import ListPage from './ListPage/ListPage';
-import "./Main.css"
+import classes from "./Main.module.css";
 import SearchBar from './SearchBar/SearchBar';
 
 const Main = () => {
@@ -23,14 +23,14 @@ const Main = () => {
     },[])
  
     return (
-        <div className='main'>
+        <div className={classes.main}>
             <SearchBar/>
             {
                 isFetching ===false 
                 ?
                 <ListPage/>       
                 :
-                <div className='fetching'>
+                <div className={classes.fetching}>
 
                 </div>
             }
