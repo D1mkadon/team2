@@ -1,19 +1,25 @@
 .AboutUs {
+
     font-family: "Arial", serif;
     height: 100%;
     width: calc(100% - 30px);
-    background: white;
+    background-image: url("./aboutUsBackground.png");
+    background-size: cover;
     padding: 5px 15px;
     color: teal;
     border: 1px solid teal;
     display: flex;
     flex-wrap: wrap;
-    text-align: center;
+    flex-direction: column;
+
 }
 .div1, .div2 {
-    width: calc(33% - 16px);
+    text-align: left;
+    width: calc(30% - 16px);
     padding: 10px 8px;
-}.h2 {
+}
+.div2{ width: 30%}
+.h2 {
 
      margin: 0;
      padding: 10px 0;

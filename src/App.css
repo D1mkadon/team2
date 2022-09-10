@@ -4,11 +4,25 @@ header{
     justify-content: space-between;
 }
 .Link {
+    padding: 5px 20px;
+    border: 1px solid teal;
+    margin: 0 10px;
     color: teal;
-    font-size: 34px;
+    font-size: 24px;
     font-weight: bold;
     text-decoration: none;
 }
 .Link:hover {
     color: black;
+}
+nav{
+    display: flex;
+    margin: 0 20px;
+}
+footer{
+    margin-top: 600px;
+    padding-top: 20px;
+    height: 100%;
+    width: 100%;
+    background: #f0f0f0;
 }

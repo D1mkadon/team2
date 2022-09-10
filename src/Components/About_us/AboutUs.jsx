@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./aboutUs.module.css";
 
-import AboutUsSocial from "./aboutUsSocial/AboutUsSocial";
+
 
 
 
@@ -15,10 +15,19 @@ const AboutUs = () => {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam at dolor doloremque dolores error illo ipsa, ipsam maiores nulla quam quasi rem suscipit. Dignissimos hic incidunt iste officiis quod.
          </div>
              <div className={classes.div2}>
-                 <h2 className={classes.h2}> 123</h2>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias aliquid consectetur cum earum eligendi eum illum impedit ipsa magni, maxime molestiae odio officia optio sint soluta totam ut voluptatibus!
-         </div>
-            <AboutUsSocial/>
+
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque eveniet facere mollitia nesciunt officiis perspiciatis qui quis, repudiandae! Accusantium ex fugiat harum ipsum, optio quae tempore veniam voluptate voluptatibus. Consequuntur.
+
+                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque eveniet facere mollitia nesciunt officiis perspiciatis qui quis, repudiandae! Accusantium ex fugiat harum ipsum, optio quae tempore veniam voluptate voluptatibus. Consequuntur.
+
+                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque eveniet facere mollitia nesciunt officiis perspiciatis qui quis, repudiandae! Accusantium ex fugiat harum ipsum, optio quae tempore veniam voluptate voluptatibus. Consequuntur.
+
+                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque eveniet facere mollitia nesciunt officiis perspiciatis qui quis, repudiandae! Accusantium ex fugiat harum ipsum, optio quae tempore veniam voluptate voluptatibus. Consequuntur.
+             </div>
+        <div>
+            <h2>You can find us here: </h2>
+        </div>
+
         </div>
 
     );

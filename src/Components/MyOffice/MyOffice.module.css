@@ -1,11 +1,8 @@
-.pages{
-  background-color: red;
-}
-
 
 .main{
   display: flex;
   flex-direction: column;
+
 }
 
 .Userinfo{
@@ -19,4 +16,21 @@
   flex-direction: column;
   margin-left: 40px;
   font-size: xx-large;
+}
+.btn {
+  color:teal;
+  position: relative;
+  top: 2px;
+  font-variant: small-caps;
+  border: 1px solid teal;
+  background: white;
+  padding: 5px 20px
+}
+.btn:hover {
+  top: 0;
+  border: 1px solid teal;
+}
+.btn:active {
+  color: black;
+  border: 1px solid black;
 }
