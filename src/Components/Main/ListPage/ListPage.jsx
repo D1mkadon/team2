@@ -13,7 +13,7 @@ const ListPage = () => {
         return temp
     }
     const temp = sortByRating(searchResult)
-    temp.splice(5,16)
+    // temp.splice(5,16)
     return (
         <div className='content-products'>
             

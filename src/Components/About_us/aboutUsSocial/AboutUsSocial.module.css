@@ -9,17 +9,18 @@
 .socials{
     padding: 5px 0;
     flex-wrap: wrap;
-    width: 50%;
+    width: 7%;
     margin: auto;
     display: flex;
     justify-content: space-between;
 }
 .a {
+    font-size: 16px;
     margin: 10px 0;
     height: 30px;
     font-weight: bold;
     text-decoration: none;
-    color: teal;
+    color: black;
     position: relative;
     top: 1px;
 }
@@ -40,9 +41,10 @@
 .github:hover {
     position: relative;
     top: 0;
-    color: black;
+
 }
 .a:hover {
+    text-decoration: underline;
     position: relative;
     top: 0;
     color: black;
@@ -61,7 +63,8 @@
     width: 100%;
 }
 .div3 {
-    width: calc(33% - 16px);
+    text-align: center;
+    width: calc(100% - 16px);
     padding: 10px 8px;
 }
 

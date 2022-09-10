@@ -13,7 +13,7 @@ const MyOffice = () => {
       {/* Modal_Window */}
       <Modal active={modalActive} setActive={setModalActive}></Modal>
       {/* Else */}
-      <div className={classes.pages}><button onClick={() => setModalActive(true)}>Зарегестрироватся </button></div>
+      <div className={classes.pages}><button onClick={() => setModalActive(true)} className={classes.btn}>Зарегестрироватся </button></div>
       <div className={classes.Userinfo}>
         <img src='https://citaty.info/files/no_avatar.png' height={"200px"} width={"200px"} alt='Avatarka'></img>
 
