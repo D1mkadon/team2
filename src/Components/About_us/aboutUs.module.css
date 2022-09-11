@@ -3,15 +3,19 @@
     font-family: "Arial", serif;
     height: 100%;
     width: calc(100% - 30px);
-    background-image: url("./aboutUsBackground.png");
+
     background-size: cover;
     padding: 5px 15px;
     color: teal;
-    border: 1px solid teal;
+
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
 
+}
+.back{
+    background-image: url("./aboutUsBackground.png");
+    border: 1px solid teal;
 }
 .div1, .div2 {
     text-align: left;
@@ -22,8 +26,37 @@
 .h2 {
 
      margin: 0;
-     padding: 10px 0;
+     padding: 10px 10px;
      height: 20px;
      width: 100%;
      font-variant: small-caps;
  }
+.workWithUs {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    display: flex;
+}
+.btnstyle{
+    background: transparent;
+    width: 150px;
+    padding: 5px 20px;
+}
+.btnstyle:hover{
+    color: teal;
+    border: 2px solid teal;
+}
+.divMap {
+    background: url("./aboutUsBackground2.png");
+    flex-direction: column;
+    align-items: flex-end;
+    border: 1px solid teal;
+    margin: 15px 0;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+}
