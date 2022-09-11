@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from "./aboutUs.module.css";
 import Map from "./aboutUsSocial/Map";
+import MoreInfoButton from "./MoreInfo/MoreInfoButton";
 
 
 
@@ -32,8 +33,8 @@ const AboutUs = () => {
                 </div>
 
             <div className={classes.workWithUs}><p>Work with us:</p>
-            <button className={classes.btnstyle}>More info:</button>
 
+            <MoreInfoButton/>
           </div>
         </div>
 
