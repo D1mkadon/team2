@@ -18,17 +18,20 @@ const SingleProductPage = () => {
         })
     },[])
     const currentProduct = useSelector(state=> state.products.currentProduct)
-    console.log(currentProduct);
     return (
         <div className='singleProductWrapper'>
             <div className='headSP'>{currentProduct.title}</div>
             <div className='foroSP'>
                 <img className='fotoSP-img' src={`${currentProduct.image}`} />
             </div>
-            <div className='descSP'>{currentProduct.title} - {currentProduct.description}</div>
-            <div className='priceSP'>
-                <div>{currentProduct.price}<span>$</span></div>
-                <button><FaCartPlus/>Add to cart </button>    
+            <div className='price-wrapper'>
+                <div className='priceSP'>
+                    <div>{currentProduct.price}<span>$</span></div>
+                    <button><FaCartPlus/>Add to cart </button>    
+                </div>
+                <div>
+                    <div className='descSP'>{currentProduct.title} - {currentProduct.description}</div>
+                </div>
             </div> 
             
             

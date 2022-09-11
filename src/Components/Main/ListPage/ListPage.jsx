@@ -1,12 +1,23 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Product from './Product/Product';
 import "./ListPage.css"
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { getCategoryProducts } from '../../actions/products';
 
 const ListPage = () => {
-    
-    const searchResult = useSelector(state=>state.products.searchValue)
+    const {category}= useParams()
+    const dispatch = useDispatch()
+    console.log(category);
+     const searchResult = useSelector(state=>state.products.searchValue)
+     useEffect(()=>{
+        getCategoryProducts(category)
+        .then(json=>{
+            console.log(json);
+            return json
+        }).then(json=>{
+        })
+    },[])
     function sortByRating(arr){
         const temp = JSON.parse(JSON.stringify(arr))
         temp.sort((a,b)=>a.rating.rate < b.rating.rate ? 1 : -1)
@@ -18,15 +29,22 @@ const ListPage = () => {
         <div className='content-products'>
             
              {
-               
+               category
+               ?
                  temp.map(product=>
-                    <Link key={product.id} to={`/product/${product.id}`}>
-                        <Product prod={product}/>
+                    <Link key={product.id} to={`/product/category/${product.id}`}>
+                        <Product  prod={product}/>
                     </Link>
                 )
+                :
+                temp.map(product=>
+                    <Link key={product.id} to={`/product/category/${product.id}`}>
+                        <Product  prod={product}/>
+                    </Link>
+                    )
                
                 
-            } 
+                }
         </div>
     );
 };

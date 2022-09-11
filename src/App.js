@@ -10,6 +10,7 @@ import React from "react";
 import MyOffice from './Components/MyOffice/MyOffice';
 import Main from './Components/Main/Main';
 import SingleProductPage from "./Components/Main/SingleProductPage/SingleProductPage";
+import ListPage from "./Components/Main/ListPage/ListPage";
 function App() {
   return (
     <div className="App">
@@ -23,7 +24,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Main />}></Route>
-        <Route path="/product/:id" element={<SingleProductPage />}></Route>
+        <Route path="/product/:category/:id" element={<SingleProductPage />}></Route>
+        <Route path="/product/:category" element={<ListPage />}></Route>
         <Route path="/MyOffice" element={<MyOffice />}></Route>
         <Route path="/ThirdPage" element={<ThirdPage />}></Route>
         <Route path="/AboutUs" element={<AboutUs />}></Route>

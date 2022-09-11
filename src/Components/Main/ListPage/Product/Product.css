@@ -1,5 +1,7 @@
 .item-content{
     width: 150px;
+    height: 100%;
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,6 +13,9 @@
     padding: 10px ;
     border-radius: 10px;
  box-sizing: border-box;   
+}
+a{
+    text-decoration: none;
 }
 .prodAndPrice{
     height: 70px;
@@ -35,6 +40,7 @@
 .item-content:hover{
    scale: 1.1;
 }
-.product-price{
-    
+.product-rate{
+    width: 100%;
+    float: left;
 }

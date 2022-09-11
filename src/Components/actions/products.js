@@ -1,5 +1,4 @@
 import axios from "axios";
-import { setIsFetching, setProducts } from "../reducers/productsReducer";
 
 export const api = axios.create({
     baseURL: "https://fakestoreapi.com"
@@ -14,11 +13,14 @@ export const getSingleProducts = async (id) => {
     return response.data
 
 }
+export const getCategory = async () => {
+    const response = await api.get(`/products/categories`)
+    return response.data
 
-// export const getProducts = (product) => {
-//     return async (dispatch) => {
-//         dispatch(setIsFetching(true))
-//         const response = await axios.get(`https://fakestoreapi.com/products`)
-//         dispatch(setProducts(response.data))
-//     }
-// }
+}
+export const getCategoryProducts = async (catProd) => {
+    const response = await api.get(`/products/category/${catProd}`)
+    return response.data
+
+}
+
