@@ -8,13 +8,13 @@
 .searchBar-input{
     width: 500px;
     border-radius: 20px;
-    border: none;
+    border: 1px solid black;
     padding: 7px;
 }
 .search-button{
-    background-color: #282c34;
     border: none;
-    color: aliceblue;
+    background-color: white;
+    color: rgb(25, 32, 37);
     margin: 3px 0 0 0;
     padding: 0;
 }

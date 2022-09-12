@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../actions/products';
 import { setSearchValue,setIsFetching, setProducts } from "../reducers/productsReducer";
+import CategoryBar from './CategoryBar/CategoryBar';
 import ListPage from './ListPage/ListPage';
 import classes from "./Main.module.css";
 import SearchBar from './SearchBar/SearchBar';
@@ -25,6 +26,7 @@ const Main = () => {
     return (
         <div className={classes.main}>
             <SearchBar/>
+            <CategoryBar/>
             {
                 isFetching ===false 
                 ?
