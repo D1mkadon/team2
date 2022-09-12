@@ -4,6 +4,7 @@ const SET_IS_ACTIVE = "SET_IS_ACTIVE"
 const SET_SEARCHVALUE = "SET_SEARCHVALUE"
 const SET_PRODUCT_CURRENT = "SET_PRODUCT_CURRENT"
 const SET_PRODUCT_CATEGORY = "SET_PRODUCT_CATEGORY"
+const SET_PRODUCT_CURRENT_CATEGORY = "SET_PRODUCT_CURRENT_CATEGORY"
 
 const defaulStore = {
     item: [],
@@ -11,7 +12,8 @@ const defaulStore = {
     isFetching: true,
     currentProduct: [],
     prodCategory: [],
-    isActive: false
+    isActive: false,
+    prodCurrentCategory: []
 }
 
 export default function productsReducer(state = defaulStore, action) {
@@ -50,6 +52,12 @@ export default function productsReducer(state = defaulStore, action) {
                 isActive: action.payload
 
             }
+        case SET_PRODUCT_CURRENT_CATEGORY:
+            return {
+                ...state,
+                prodCurrentCategory: action.payload
+
+            }
 
         default:
             return state
@@ -79,6 +87,11 @@ export const setCurrentProduct = (prod) => ({
 })
 export const setProductCategory = (prod) => ({
     type: SET_PRODUCT_CATEGORY,
+    payload: prod
+
+})
+export const setProductCurrentCategory = (prod) => ({
+    type: SET_PRODUCT_CURRENT_CATEGORY,
     payload: prod
 
 })

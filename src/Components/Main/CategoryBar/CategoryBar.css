@@ -15,6 +15,7 @@
 }
 .category-btn:hover{
     background-color: blueviolet;
+    color: white;
 }
 .listCategory{
     margin-top: 30px;
@@ -25,16 +26,18 @@
     
 
 }
-.listCategory div{
+.listCategory a{
     text-align: center;
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.342) 0px 5px 15px;
     cursor: pointer;
     padding: 5px;
+    color: black;
 }
-.listCategory div:hover{
+.listCategory a:hover{
     background-color: blueviolet;
     scale: 1.1;
+    color: white;
 
 }

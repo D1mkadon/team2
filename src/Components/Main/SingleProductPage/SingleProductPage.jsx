@@ -10,7 +10,6 @@ const SingleProductPage = () => {
     const {id} = useParams()
     const dispatch = useDispatch()
     // sp - single product
-    console.log(id);
     useEffect(()=>{
         getSingleProducts(id)
         .then(json=>{
