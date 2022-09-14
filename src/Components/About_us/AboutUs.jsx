@@ -29,7 +29,7 @@ const AboutUs = () => {
              </div></div>
 
                 <div className={classes.divMap}>
-            <h2>You can find us here: </h2><Map/>
+            <h2 className={classes.h2map}>You can find us here: </h2><Map/>
                 </div>
 
             <div className={classes.workWithUs}><p>Work with us:</p>
