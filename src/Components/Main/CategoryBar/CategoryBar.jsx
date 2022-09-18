@@ -21,14 +21,14 @@ const CategoryBar = () => {
     return (
         <div className='category-wrapper'>
             {
-                isActive === true
+                isActive
                 ?
                 <div>
                     <div className='category-btn' onClick={()=>dispatch(setIsActive(!isActive))}>
                         Category
                     </div>
                     <div className='listCategory'>
-                        <Link to={`/product/${category[0]}`}>
+                        {/* <Link to={`/product/${category[0]}`}>
                             {category[0]}
                         </Link>
                         <Link to={`/product/${category[1]}`}>
@@ -39,7 +39,12 @@ const CategoryBar = () => {
                         </Link>
                         <Link to={`/product/${category[3]}`}>
                             {category[3]}
-                        </Link>
+                        </Link> */}
+                        {category.map(cat => 
+                           ( <Link to={`/product/${cat}`}>
+                            {cat}
+                        </Link>)
+                        )}
                     </div>
                 </div>
                 :

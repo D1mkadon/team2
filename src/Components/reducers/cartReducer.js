@@ -8,7 +8,7 @@ const REMOVE_ITEM = "REMOVE_ITEM"
 
 
 const defaulStore = {
-    id: [],
+    arrOfId: [],
     inCart:[]
 }
 
@@ -17,8 +17,7 @@ export default function cartReducer(state = defaulStore, action) {
         case SET_CART:
             return {
                 ...state,
-                
-                id: [...state.id, action.payload]
+                arrOfId: [...state.arrOfId, action.payload]
             }
         
         case SET_INCART:
@@ -29,8 +28,7 @@ export default function cartReducer(state = defaulStore, action) {
         case REMOVE_ITEM:
             return {
                 ...state,
-                //  id: state.id.filter(el => el.id !== action.payload)    
-
+                arrOfId: state.arrOfId.filter((id) => id !== action.payload)
         }
 
         default:

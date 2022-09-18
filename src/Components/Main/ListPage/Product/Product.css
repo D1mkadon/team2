@@ -37,9 +37,9 @@ a{
     height: 30px;
     overflow: hidden;
 }
-.item-content:hover{
+/* .item-content:hover{
    scale: 1.1;
-}
+} */
 .product-rate{
     width: 100%;
     float: left;

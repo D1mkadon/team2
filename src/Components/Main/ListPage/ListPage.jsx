@@ -6,19 +6,21 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getCategoryProducts } from '../../actions/products';
 import { setProductCurrentCategory } from '../../reducers/productsReducer';
 import SearchBar from '../SearchBar/SearchBar';
+import { setCartPrice } from '../../reducers/cartReducer';
+import { FaCartPlus } from 'react-icons/fa';
 
 const ListPage = () => {
     const {category}= useParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
      const searchResult = useSelector(state=>state.products.searchValue)
-     const currentProductsCategory = useSelector(state=>state.products.prodCurrentCategory)
-     useEffect(()=>{
-        getCategoryProducts(category)
-        .then(json=>{
-            dispatch(setProductCurrentCategory(json))
-        })
-    },[])
+     const currentProductsCategory = useSelector(state=>state.products.item)
+    //  useEffect(()=>{
+    //     getCategoryProducts(category)
+    //     .then(json=>{
+    //         dispatch(setProductCurrentCategory(json))
+    //     })
+    // },[])
     function sortByRating(arr){
         const temp = JSON.parse(JSON.stringify(arr))
         temp.sort((a,b)=>a.rating.rate < b.rating.rate ? 1 : -1)
@@ -37,18 +39,24 @@ const ListPage = () => {
                     <button className='list-btn' onClick={goBack}>Go back</button>
                     {
                         currentProductsCategory.map(product=>
-                            <Link key={product.id} to={`/product/category/${product.id}`}>
-                                <Product  prod={product}/>
-                            </Link>
+                            <div>
+                                <Link key={product.id} to={`/product/category/${product.id}`}>
+                                    <Product prod={product}/>
+                                </Link>
+                                <button onClick={()=> dispatch(setCartPrice(+product.id))}><FaCartPlus/>Add to cart </button>    
+                           </div>  
                         )
 
                     }
                  </div>
                 :
                 temp.map(product=>
-                    <Link key={product.id} to={`/product/category/${product.id}`}>
-                        <Product  prod={product}/>
-                    </Link>
+                    <div>
+                                <Link key={product.id} to={`/product/category/${product.id}`}>
+                                    <Product prod={product}/>
+                                </Link>
+                                <button onClick={()=> dispatch(setCartPrice(+product.id))}><FaCartPlus/>Add to cart </button>    
+                           </div>  
                     )
                
                 

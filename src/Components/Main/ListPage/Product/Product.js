@@ -11,6 +11,7 @@ const Product = ({ prod }) => {
             <div className='prodAndPrice'>
                 <div className='product-title'>{prod.title}</div>
                 <div className='product-price'>{prod.price} $</div>
+                
             </div>
         </div>
     );
