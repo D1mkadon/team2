@@ -12,9 +12,8 @@
     padding: 7px;
 }
 .search-button{
+    background-color: snow;
     border: none;
-    background-color: white;
-    color: rgb(25, 32, 37);
     margin: 3px 0 0 0;
     padding: 0;
 }
