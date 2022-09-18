@@ -3,6 +3,7 @@ import { FaCartPlus } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSingleProducts } from '../../actions/products';
+import { setCartPrice } from '../../reducers/cartReducer';
 import { setCurrentProduct } from '../../reducers/productsReducer';
 import "./SingleProductPage.css"
 
@@ -28,7 +29,7 @@ const SingleProductPage = () => {
             <div className='descSP'>{currentProduct.title} - {currentProduct.description}</div>
             <div className='priceSP'>
                 <div>{currentProduct.price}<span>$</span></div>
-                <button><FaCartPlus/>Add to cart </button>    
+                <button onClick={()=> dispatch(setCartPrice(+currentProduct.id))}><FaCartPlus/>Add to cart </button>    
             </div> 
             
             
