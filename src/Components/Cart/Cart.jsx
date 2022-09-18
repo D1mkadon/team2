@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+import './Cart.css'
 import { useDispatch, useSelector } from 'react-redux';
 import Product from '../Main/ListPage/Product/Product';
 import { setRemoveItem } from '../reducers/cartReducer';
@@ -25,12 +25,12 @@ const Cart = () => {
   dispatch(setRemoveItem(index))
  }
   return (
-    <div>
+    <div className='CartWrapper'>
         {
             arr.map(product=>
                 <div key={product.id} to={`/product/category/${product.id}`}>
                     <Product prod={product}/>
-                    <button onClick={handlerDelete(1)}>Delete</button>
+                    <button onClick={handlerDelete(product.id)}>Delete</button>
                 </div>
             )
         }

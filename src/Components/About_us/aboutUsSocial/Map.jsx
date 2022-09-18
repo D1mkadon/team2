@@ -5,7 +5,7 @@ import classes from "./Map.module.css";
 
 
 export default function Map() {
-    const { isLoaded} =
+    const {isLoaded} =
         useLoadScript({googleMapsApiKey: "AIzaSyAuPEVVFiRqFtEN8Zle5pOG33RahL0Ijr0"});
     if (!isLoaded) return <div>loading...</div>
 return <Map1 />

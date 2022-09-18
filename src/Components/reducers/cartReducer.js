@@ -29,7 +29,7 @@ export default function cartReducer(state = defaulStore, action) {
         case REMOVE_ITEM:
             return {
                 ...state,
-                //  id: id.filter(el => el.id !== action.payload.id)    
+                //  id: state.id.filter(el => el.id !== action.payload)    
 
         }
 

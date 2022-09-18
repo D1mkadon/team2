@@ -25,12 +25,13 @@ const Main = () => {
  
     return (
         <div className={classes.main}>
-            <SearchBar/>
             <CategoryBar/>
             {
                 isFetching ===false 
                 ?
-                <ListPage/>       
+                <div>
+                    <ListPage/>       
+                </div>
                 :
                 <div className={classes.fetching}>
 

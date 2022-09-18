@@ -5,6 +5,7 @@ import "./ListPage.css"
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getCategoryProducts } from '../../actions/products';
 import { setProductCurrentCategory } from '../../reducers/productsReducer';
+import SearchBar from '../SearchBar/SearchBar';
 
 const ListPage = () => {
     const {category}= useParams()
@@ -28,6 +29,7 @@ const ListPage = () => {
     const goBack = ()=>navigate(-1)
     return (
         <div className='content-products'>
+                    <SearchBar/>
              {
                  category
                  ? 
