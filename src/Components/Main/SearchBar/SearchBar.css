@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 .searchBar-input{
     width: 500px;

@@ -17,20 +17,21 @@
   margin-left: 40px;
   font-size: xx-large;
 }
-.btn {
-  color:teal;
-  position: relative;
-  top: 2px;
-  font-variant: small-caps;
-  border: 1px solid teal;
-  background: white;
-  padding: 5px 20px
+
+.btn{
+  text-align: center;
+  margin: 10px 0;
+  border: 1px solid black;
+  background: transparent;
+  width: 150px;
+  padding: 5px 0;
 }
-.btn:hover {
-  top: 0;
-  border: 1px solid teal;
+.btn:hover{
+  text-decoration: underline;
+  color: black;
+
 }
 .btn:active {
   color: black;
-  border: 1px solid black;
+
 }

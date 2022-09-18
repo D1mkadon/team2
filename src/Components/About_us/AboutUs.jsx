@@ -2,12 +2,6 @@ import React from 'react';
 import classes from "./aboutUs.module.css";
 import Map from "./aboutUsSocial/Map";
 import MoreInfoButton from "./MoreInfo/MoreInfoButton";
-
-
-
-
-
-
 const AboutUs = () => {
     return (
         <div className={classes.AboutUs}>
