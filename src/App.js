@@ -35,11 +35,7 @@ function App() {
 
 
 
-<<<<<<< HEAD
 
-=======
-      
->>>>>>> Card2
     </div >
   );
 }

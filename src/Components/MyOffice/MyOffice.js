@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import classes from "./MyOffice.module.css"
 import { useSelector } from 'react-redux';
+import Modal from "./modal/Modal"
 import ImageUpload from './ImageUpload/imageUpload';
 
 const MyOffice = () => {
@@ -14,6 +15,7 @@ const MyOffice = () => {
     <div className={classes.main}>
       {/* Modal_Window */}
       <Modal active={modalActive} setActive={setModalActive}></Modal>
+      
       <ImageUpload activeImage={modalImage} setModalImage={setModalImage}></ImageUpload>
       {/* <ImageUpload active={modalImage} setActive={setModalImage}></ImageUpload> */}
 

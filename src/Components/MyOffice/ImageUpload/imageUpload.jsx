@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, {useState } from 'react';
 // import "../modal/Modal.css"
 import './imageUpload.css'
-import "../styles.css"
+import "../styles.module.css"
 import {setImageUrl} from '../../reducers/imageUploadReducer'
 
 
