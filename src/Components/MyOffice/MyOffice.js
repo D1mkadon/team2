@@ -2,20 +2,26 @@ import React, { useState } from 'react';
 
 import classes from "./MyOffice.module.css"
 import { useSelector } from 'react-redux';
-import Modal from "./modal/Modal";
+import ImageUpload from './ImageUpload/imageUpload';
 
 const MyOffice = () => {
   const [modalActive, setModalActive] = useState(true)
+  const [modalImage, setModalImage] = useState(false)
   const name = useSelector(state => state.authData.name)
   const surname = useSelector(state => state.authData.surname)
+  const imageUrl = useSelector(state => state.imageUrl.imageUrl)
   return (
     <div className={classes.main}>
       {/* Modal_Window */}
       <Modal active={modalActive} setActive={setModalActive}></Modal>
+      <ImageUpload activeImage={modalImage} setModalImage={setModalImage}></ImageUpload>
+      {/* <ImageUpload active={modalImage} setActive={setModalImage}></ImageUpload> */}
+
       {/* Else */}
-      <div className={classes.pages}><button onClick={() => setModalActive(true)}>Зарегестрироватся </button></div>
-      <div className={classes.Userinfo}>
-        <img src='https://citaty.info/files/no_avatar.png' height={"200px"} width={"200px"} alt='Avatarka'></img>
+      <div className='pages'><button onClick={() => setModalActive(true)}>Зарегестрироватся </button></div>
+      <div className='pages'><button onClick={()=> setModalImage(true)}>Загрузить аватар</button></div>
+      <div className='User-info'>
+        <img src={imageUrl} height={"200px"} width={"200px"} alt='Avatarka'></img>
 
         <div className={classes.UserName}>
           <p>{name}</p>

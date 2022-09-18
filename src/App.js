@@ -11,6 +11,7 @@ import MyOffice from './Components/MyOffice/MyOffice';
 import Main from './Components/Main/Main';
 import SingleProductPage from "./Components/Main/SingleProductPage/SingleProductPage";
 import ListPage from "./Components/Main/ListPage/ListPage";
+import Cart from './Components/Cart/Cart'
 function App() {
   return (
     <div className="App">
@@ -18,7 +19,7 @@ function App() {
 
         <Link className="Link" to="/">Main</Link>
         <Link className="Link" to="/MyOffice">MyOffice</Link>
-        <Link className="Link" to="/thirdPage">3</Link>
+        <Link className="Link" to="/Cart">Cart</Link>
         <Link className="Link" to="/AboutUs">AboutUs</Link>
       </header>
 
@@ -27,14 +28,18 @@ function App() {
         <Route path="/product/:category/:id" element={<SingleProductPage />}></Route>
         <Route path="/product/:category" element={<ListPage />}></Route>
         <Route path="/MyOffice" element={<MyOffice />}></Route>
-        <Route path="/ThirdPage" element={<ThirdPage />}></Route>
+        <Route path="/Cart" element={<Cart/>}></Route>
         <Route path="/AboutUs" element={<AboutUs />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
 
 
 
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> Card2
     </div >
   );
 }

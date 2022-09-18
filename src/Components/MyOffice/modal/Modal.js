@@ -94,6 +94,7 @@ const Modal = ({ active, setActive }) => {
     dispatch(setMainSurname(surname1));
   }
 
+  
 
   useEffect(() => {
     if (emailError || passwordError || nameError || surnameError) {
@@ -103,7 +104,7 @@ const Modal = ({ active, setActive }) => {
     };
   }, [emailError, passwordError, nameError, surnameError]);
   return (
-    <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
+    <div className={active ? "modal active" : "modal"} >
       <div className={active ? "modal_content active" : "modal_content"} onClick={e => e.stopPropagation()}>
         <form onClick={(e) => preventHandler(e)} >
           <h1 className="test">Регистрация</h1>
@@ -119,7 +120,8 @@ const Modal = ({ active, setActive }) => {
           {(surnameDirty && surnameError) && <div className={style.red}>{surnameError}</div>}
           <input value={surname} onChange={(e) => surnameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='surname' type="text" placeholder='Введите свою фамилию' />
 
-          <button onClick={() => setNameAndSurname(name, surname)} className={style.submit} disabled={!formValid} type='submit'>Регистрация</button>
+          <button onClick={() => {setNameAndSurname(name, surname); setActive(false)}} className="submit" disabled={!formValid} type='submit'>Регистрация</button>
+          <button onClick={() => setActive(false)} className="submit" type='submit'>Временно для удобства</button>
         </form>
       </div>
     </div>
