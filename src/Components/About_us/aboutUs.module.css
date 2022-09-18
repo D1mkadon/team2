@@ -1,21 +1,17 @@
 .AboutUs {
-
     font-family: "Arial", serif;
     height: 100%;
     width: calc(100% - 30px);
-
     background-size: cover;
     padding: 5px 15px;
-    color: teal;
-
+    color: black;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-
 }
 .back{
-    background-image: url("./aboutUsBackground.png");
-    border: 1px solid teal;
+    background: url("./black-white.jpg");
+    border: 1px solid black;
 }
 .div1, .div2 {
     text-align: left;
@@ -24,7 +20,6 @@
 }
 .div2{ width: 30%}
 .h2 {
-
      margin: 0;
      padding: 10px 10px;
      height: 20px;
@@ -41,19 +36,18 @@
     display: flex;
 }
 .btnstyle{
+    border: 1px solid black;
     background: transparent;
     width: 150px;
     padding: 5px 20px;
 }
 .btnstyle:hover{
-    color: teal;
-    border: 2px solid teal;
+    color: black;
+    border: 2px solid black;
 }
 .divMap {
-    background: url("./aboutUsBackground2.png");
     flex-direction: column;
     align-items: flex-end;
-    border: 1px solid teal;
     margin: 15px 0;
     display: flex;
     justify-content: flex-end;
@@ -64,14 +58,18 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    margin: 10px 0;
 }
 .h2map{
-    margin-right: 15%;
-    text-shadow: -1px 1px 0 white,
+    text-align: center;
+    font-size: 24px;
+    text-shadow: -1px 1px 0 grey,
     1px 1px 0 white,
     1px -1px 0 white,
     -1px -1px 0 white;
     position: relative;
-    top: 60px;
+    font-weight: bold;
     z-index: 2;
+    width: 100%;
 }

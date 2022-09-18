@@ -48,7 +48,7 @@ const Modal = ({ active, setActive }) => {
       setEmailError('Некорректный емейл');
     } else {
       setEmailError('');
-    };
+    }
   };
 
   const passwordHandler = (e) => {
@@ -57,10 +57,10 @@ const Modal = ({ active, setActive }) => {
       setPasswordError('Пароль должен быть длиннее 4 и меньше 12');
       if (!e.target.value) {
         setPasswordError('Пароль не может быть пустым')
-      };
+      }
     } else {
       setPasswordError('')
-    };
+    }
   };
 
   const surnameHandler = (e) => {
@@ -69,10 +69,10 @@ const Modal = ({ active, setActive }) => {
       setNameError('Фамилия не может быть пустая');
       if (!e.target.value) {
         setSurnameError('Фамилия не может быть пустая')
-      };
+      }
     } else {
       setSurnameError('')
-    };
+    }
   };
 
   const nameHandler = (e) => {
@@ -81,10 +81,10 @@ const Modal = ({ active, setActive }) => {
       setNameError('Имя неможет быть пустым');
       if (!e.target.value) {
         setNameError('Имя неможет быть пустым')
-      };
+      }
     } else {
       setNameError('')
-    };
+    }
   };
   const preventHandler = (e) => {
     e.preventDefault()
@@ -100,24 +100,24 @@ const Modal = ({ active, setActive }) => {
       setFormValid(false);
     } else {
       setFormValid(true);
-    };
+    }
   }, [emailError, passwordError, nameError, surnameError]);
   return (
     <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
       <div className={active ? "modal_content active" : "modal_content"} onClick={e => e.stopPropagation()}>
         <form onClick={(e) => preventHandler(e)} >
-          <h1 className="test">Регистрация</h1>
+          <h1 className={style.test}>Регистрация</h1>
           {(emailDirty && emailError) && <div className={style.red}>{emailError}</div>}
-          <input value={email} onChange={(e) => emailHandler(e)} onBlur={(e) => onBlurHandler(e)} name='email' type="text" placeholder='Введите свой email' />
+          <input value={email} className={style.input} onChange={(e) => emailHandler(e)} onBlur={(e) => onBlurHandler(e)} name='email' type="text" placeholder='Введите свой email' />
 
           {(passwordDirty && passwordError) && <div className={style.red}>{passwordError}</div>}
-          <input value={password} onChange={(e) => passwordHandler(e)} onBlur={(e) => onBlurHandler(e)} name='password' type="password" placeholder='Введите свой пароль' />
+          <input value={password} className={style.input} onChange={(e) => passwordHandler(e)} onBlur={(e) => onBlurHandler(e)} name='password' type="password" placeholder='Введите свой пароль' />
 
-          {(nameDirty && nameError) && <div className="red">{nameError}</div>}
-          <input value={name} onChange={(e) => nameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='name' type="text" placeholder='Введите свое имя' />
+          {(nameDirty && nameError) && <div className={style.red}>{nameError}</div>}
+          <input value={name} className={style.input} onChange={(e) => nameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='name' type="text" placeholder='Введите свое имя' />
 
           {(surnameDirty && surnameError) && <div className={style.red}>{surnameError}</div>}
-          <input value={surname} onChange={(e) => surnameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='surname' type="text" placeholder='Введите свою фамилию' />
+          <input value={surname} className={style.input} onChange={(e) => surnameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='surname' type="text" placeholder='Введите свою фамилию' />
 
           <button onClick={() => setNameAndSurname(name, surname)} className={style.submit} disabled={!formValid} type='submit'>Регистрация</button>
         </form>
