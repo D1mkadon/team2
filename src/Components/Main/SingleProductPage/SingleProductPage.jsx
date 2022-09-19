@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSingleProducts } from '../../actions/products';
 import { setCartPrice } from '../../reducers/cartReducer';
-import { setCurrentProduct } from '../../reducers/productsReducer';
+import { setCurrentProduct, setSingleProduct } from '../../reducers/productsReducer';
 import "./SingleProductPage.css"
 
 const SingleProductPage = () => {
@@ -14,10 +14,10 @@ const SingleProductPage = () => {
     useEffect(()=>{
         getSingleProducts(id)
         .then(json=>{
-            dispatch(setCurrentProduct(json))
+            dispatch(setSingleProduct(json))
         })
     },[])
-    const currentProduct = useSelector(state=> state.products.currentProduct)
+    const currentProduct = useSelector(state=> state.products.singleProduct)
     return (
         <div className='singleProductWrapper'>
             <div className='headSP'>{currentProduct.title}</div>

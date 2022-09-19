@@ -4,12 +4,13 @@ const SET_CART = "SET_CART"
 
 const SET_INCART = "SET_INCART"
 
+
 const REMOVE_ITEM = "REMOVE_ITEM"
 
 
 const defaulStore = {
     arrOfId: [],
-    inCart:[]
+    inCart:" Add cart",
 }
 
 export default function cartReducer(state = defaulStore, action) {
@@ -46,6 +47,7 @@ export const setInCart = (inCart) => ({
     payload: inCart
 
 })
+
 export const setRemoveItem = (index) => ({
     type: REMOVE_ITEM,
     payload: index
