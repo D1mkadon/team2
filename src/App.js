@@ -10,8 +10,8 @@ import Main from './Components/Main/Main';
 import SingleProductPage from "./Components/Main/SingleProductPage/SingleProductPage";
 import ListPage from "./Components/Main/ListPage/ListPage";
 import Cart from './Components/Cart/Cart'
-import FooterDescription from "./Components/FooterDescription/FooterDescription";
-import AboutUsSocial from "./Components/About_us/aboutUsSocial/AboutUsSocial";
+// import FooterDescription from "./Components/FooterDescription/FooterDescription";
+// import AboutUsSocial from "./Components/About_us/aboutUsSocial/AboutUsSocial";
 function App() {
   return (
     <div className="App">
@@ -28,8 +28,8 @@ function App() {
             <main><div className="Container">
                 <Routes>
                     <Route path="/" element={<Main />}></Route>
-                    <Route path="/product/:category/:id" element={<SingleProductPage />}></Route>
-                    <Route path="/product/:category" element={<ListPage />}></Route>
+                    <Route path="/:category/:id" element={<SingleProductPage />}></Route>
+                    <Route path="/:category" element={<ListPage />}></Route>
                     <Route path="/MyOffice" element={<MyOffice />}></Route>
                     <Route path="/Cart" element={<Cart/>}></Route>
                     <Route path="/AboutUs" element={<AboutUs />}></Route>
@@ -37,10 +37,10 @@ function App() {
                 </Routes>
             </div>
             </main>
-            <footer>
+            {/* <footer>
                 <FooterDescription/>
                 <AboutUsSocial/>
-            </footer>
+            </footer> */}
         </div>
 
     </div >

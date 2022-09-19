@@ -6,7 +6,11 @@ import {FaSearch} from "react-icons/fa";
 
 const SearchBar = () => {
     const dispatch = useDispatch()
-    const products = useSelector(state=> state.products.item)
+    const products = useSelector(state=> state.products.currentProducts)
+    const searchResult = useSelector(state=>state.products.searchValue)
+    const temp = JSON.parse(JSON.stringify(searchResult))
+
+
     const handleSubmit =(e)=>{
         e.preventDefault()
     }
@@ -14,7 +18,7 @@ const SearchBar = () => {
         if (!e.target.value) {
             return dispatch(setSearchValue(products))
         }
-        const resultArr = products.filter(product=>product.title.includes(e.target.value))
+        const resultArr = temp.filter(product=>product.title.includes(e.target.value))
         dispatch(setSearchValue(resultArr))
     }
     return (

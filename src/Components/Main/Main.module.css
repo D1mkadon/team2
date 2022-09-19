@@ -9,7 +9,6 @@
 
 .fetching {
 
-        
         margin: 0 auto;
         transform: rotateZ(45deg);
         perspective: 1200px;
@@ -17,6 +16,7 @@
         width: 80px;
         height: 80px;
         color: rgb(148, 78, 228);
+
       }
         .fetching:before,
         .fetching:after {

@@ -2,35 +2,38 @@ import React, { useEffect } from 'react';
 import './Cart.css'
 import { useDispatch, useSelector } from 'react-redux';
 import Product from '../Main/ListPage/Product/Product';
-import { setRemoveItem } from '../reducers/cartReducer';
-// import { getSingleProducts } from '../../actions/products';
-// import { setCartPrice } from '../../reducers/cartReducer';
-// import { setCurrentProduct } from '../../reducers/productsReducer';
+import { setInCart, setRemoveItem } from '../reducers/cartReducer';
+import { Link } from 'react-router-dom';
 
 
 const Cart = () => {
-  const dispatch = useDispatch()
-  const id = useSelector(state => state.cart.id)
-  const idProduct = useSelector(state=> state.products.item)
-  // console.log(idProduct);
-  const temp = JSON.parse(JSON.stringify(idProduct));
-  const arr = [];
-
-  id.forEach(element => {
-    let s = (temp.find(item=>item.id === element));
-    arr.push(s)
-  });
- console.log(arr);
+  const dispatch = useDispatch();
+  const arrOfId = useSelector(state => state.cart.arrOfId);
+  const nameBtn = useSelector(state => state.cart.inCart);
+  const products = useSelector(state=> state.products.item);
+ 
+  const currentCard = products.filter((item) => arrOfId.includes(item.id));
+  dispatch(setInCart("Delete"))
+ console.log(currentCard);
  function handlerDelete(index){
   dispatch(setRemoveItem(index))
  }
   return (
     <div className='CartWrapper'>
         {
-            arr.map(product=>
-                <div key={product.id} to={`/product/category/${product.id}`}>
-                    <Product prod={product}/>
-                    <button onClick={handlerDelete(product.id)}>Delete</button>
+            currentCard.map(product =>
+               <div>
+                    <Link key={product.id} to={`/category/${product.id}`}>
+                      <Product prod={product}/>
+                    </Link>
+                    <button 
+                      className='customBtn' 
+                      onClick={()=>{
+                        handlerDelete(product.id)
+                      }}
+                      >
+                        {nameBtn}
+                    </button>
                 </div>
             )
         }

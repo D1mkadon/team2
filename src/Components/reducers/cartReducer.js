@@ -4,12 +4,13 @@ const SET_CART = "SET_CART"
 
 const SET_INCART = "SET_INCART"
 
+
 const REMOVE_ITEM = "REMOVE_ITEM"
 
 
 const defaulStore = {
-    id: [],
-    inCart:[]
+    arrOfId: [],
+    inCart:" Add cart",
 }
 
 export default function cartReducer(state = defaulStore, action) {
@@ -17,8 +18,7 @@ export default function cartReducer(state = defaulStore, action) {
         case SET_CART:
             return {
                 ...state,
-                
-                id: [...state.id, action.payload]
+                arrOfId: [...state.arrOfId, action.payload]
             }
         
         case SET_INCART:
@@ -29,8 +29,7 @@ export default function cartReducer(state = defaulStore, action) {
         case REMOVE_ITEM:
             return {
                 ...state,
-                //  id: state.id.filter(el => el.id !== action.payload)    
-
+                arrOfId: state.arrOfId.filter((id) => id !== action.payload)
         }
 
         default:
@@ -48,6 +47,7 @@ export const setInCart = (inCart) => ({
     payload: inCart
 
 })
+
 export const setRemoveItem = (index) => ({
     type: REMOVE_ITEM,
     payload: index
