@@ -4,7 +4,7 @@ import Product from './Product/Product';
 import SearchBar from '../SearchBar/SearchBar';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FaCartPlus } from 'react-icons/fa';
-import { setCartPrice } from '../../reducers/cartReducer';
+import { setAddTotalPrice, setCartPrice } from '../../reducers/cartReducer';
 import { setAllCurrentProduct, setCaregorySearchValue, setCurrentProduct, setSearchValue } from '../../reducers/productsReducer';
 import { getProducts } from '../../actions/products';
 import "./ListPage.css"
@@ -70,6 +70,7 @@ const ListPage = () => {
                                     className='customBtn' 
                                     onClick={()=>{
                                          dispatch(setCartPrice(+product.id))
+                                         dispatch(setAddTotalPrice(product.price))
                                     }}
                                 /> 
                            </div>  
@@ -89,6 +90,7 @@ const ListPage = () => {
                                     className='customBtn' 
                                     onClick={()=>{
                                          dispatch(setCartPrice(+product.id))
+                                         dispatch(setAddTotalPrice(product.price))
                                     }}
                                 /> 
                            </div>  

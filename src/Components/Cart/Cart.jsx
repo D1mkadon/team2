@@ -15,7 +15,7 @@ const Cart = () => {
   // console.log(arrOfId.indexOf(3));
   const currentCard = products.filter((item) => arrOfId.includes(item.id));
   dispatch(setInCart("Delete"))
-
+ 
 
   return (
     <div className='CartWrapper'>
