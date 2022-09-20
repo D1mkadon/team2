@@ -1,57 +1,40 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Product from './Product/Product';
 import SearchBar from '../SearchBar/SearchBar';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FaCartPlus } from 'react-icons/fa';
-import { setAddTotalPrice, setCartPrice } from '../../reducers/cartReducer';
-import { setAllCurrentProduct, setCaregorySearchValue, setCurrentProduct, setSearchValue } from '../../reducers/productsReducer';
-import { getProducts } from '../../actions/products';
+import { setAddMoreProducts, setAddTotalPrice, setCartPrice, setInCart } from '../../reducers/cartReducer';
 import "./ListPage.css"
+import CustomButton from '../CustomButton/CustomButton';
 
 const ListPage = () => {
     const {category}= useParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [searchedValue , setSearchedValue] = useState('');
     
-    const searchResult = useSelector(state=>state.products.searchValue)
+    const product = useSelector(state=> state.products.items)
+
+    const filterItemsAndSort = useMemo(() => {
+        let filteredItems;
+        filteredItems = product.filter(item => item.title.toLowerCase().includes(searchedValue));
+        if(category) filteredItems = filteredItems.filter(item => item.category === category);
+        return sortByRating(filteredItems);
+     }, [product, searchedValue]);
+    
 
     function sortByRating(arr){
         const temp = JSON.parse(JSON.stringify(arr))
         temp.sort((a,b)=>a.rating.rate < b.rating.rate ? 1 : -1)
         return temp
     }
-    useEffect(() => {
-        getProducts()
-        .then(json=>{
-            dispatch(setSearchValue(json))
-            dispatch(setCaregorySearchValue(category))
-            if (category) {
-                dispatch(setCurrentProduct(category))
-            }else{
 
-                dispatch(setAllCurrentProduct(json))
-            }
-
-        })
-    }, []);
-   
-
-    // const handleSearchChange = (e) =>{
-    //     if (!e.target.value) {
-    //         return dispatch(setSearchValue(products))
-    //     }
-    //     const resultArr = products.filter(product=>product.title.includes(e.target.value))
-    //     dispatch(setSearchValue(resultArr))
-    // }
-
-    const temp = sortByRating(searchResult)
-    temp.splice(5,temp.length)
 
     const goBack = ()=>navigate(-1)
     return (
         <div className='content-products'>
-                    <SearchBar/>
+                    <SearchBar setSearchedValue={setSearchedValue} />
              {
                  category
                  ? 
@@ -59,41 +42,21 @@ const ListPage = () => {
                     <button className='list-btn' onClick={goBack}>Go back</button>
                     {
                         
-                        searchResult.map(product=>
+                        filterItemsAndSort.map(product=>
                             <div >
-                                <Link key={product.id} to={`/category/${product.id}`}>
-                                    <Product prod={product}/>
-                                </Link>
-                                <input 
-                                    type="button" 
-                                    value={"add to cart"} 
-                                    className='customBtn' 
-                                    onClick={()=>{
-                                         dispatch(setCartPrice(+product.id))
-                                         dispatch(setAddTotalPrice(product.price))
-                                    }}
-                                /> 
+                                <Product prod={product}/>
+                                <CustomButton clickHandler={() =>dispatch(setAddMoreProducts(product.id , product.price)) } />
                            </div>  
                         )
 
                     }
                  </div>
                 :
-                temp.map(product=>
+                filterItemsAndSort.map(product=>
                     <div>
-                                <Link key={product.id} to={`/category/${product.id}`}>
-                                    <Product prod={product}/>
-                                </Link>
-                                <input 
-                                    type="button" 
-                                    value={"add to cart"} 
-                                    className='customBtn' 
-                                    onClick={()=>{
-                                         dispatch(setCartPrice(+product.id))
-                                         dispatch(setAddTotalPrice(product.price))
-                                    }}
-                                /> 
-                           </div>  
+                        <Product prod={product}/>
+                        <CustomButton clickHandler={() =>dispatch(setAddMoreProducts(product.id , product.price)) } />
+                   </div>  
                     )
                
                 

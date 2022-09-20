@@ -9,13 +9,13 @@ const SET_SINGLE_CURRENT = "SET_SINGLE_CURRENT"
 const SET_ALLPRODUCTS_CURRENT = "SET_ALLPRODUCTS_CURRENT"
 
 const defaulStore = {
-    item: [],
+    items: [],
+    prodCategory: [],
     searchValue: [],
-    currentProducts: [],
+    isActive: false,
+    categoryProducts: [],
     singleProduct:[],
     isFetching: true,
-    prodCategory: [],
-    isActive: false,
 }
 
 export default function productsReducer(state = defaulStore, action) {
@@ -23,36 +23,29 @@ export default function productsReducer(state = defaulStore, action) {
         case SET_PRODUCTS:
             return {
                 ...state,
-                item: action.payload,
+                items: action.payload,
+                // searchValue: action.payload,
                 isFetching: false
             }
-        case SET_IS_FETCH:
-            return {
-                ...state,
-                isFetching: action.payload
-            }
-        case SET_SEARCHVALUE:
-            return {
-                ...state,
-                searchValue: action.payload
-            }
-        case SET_CURRENT_SEARCHVALUE:
-            return {
-                ...state,
-                searchValue: state.searchValue.filter((prod)=>prod.category === action.payload)
-            }
-        case SET_PRODUCTS_CURRENT:
-            return {
-                ...state,
-                currentProducts: state.searchValue.filter((prod)=>prod.category === action.payload) 
+        
+     
+        // case SET_CURRENT_SEARCHVALUE:
+        //     return {
+        //         ...state,
+        //         searchValue: state.searchValue.filter((prod)=>prod.category === action.payload)
+        //     }
+        // case SET_PRODUCTS_CURRENT:
+        //     return {
+        //         ...state,
+        //         categoryProducts: state.searchValue.filter((prod)=>prod.category === action.payload) 
 
-            }
-        case SET_ALLPRODUCTS_CURRENT:
-            return {
-                ...state,
-                currentProducts: state.item
+        //     }
+        // case SET_ALLPRODUCTS_CURRENT:
+        //     return {
+        //         ...state,
+        //         categoryProducts: state.items
 
-            }
+        //     }
         case SET_PRODUCT_CATEGORY:
             return {
                 ...state,
@@ -78,6 +71,71 @@ export default function productsReducer(state = defaulStore, action) {
     }
 
 }
+// export default function productsReducer(state = defaulStore, action) {
+//     switch (action.type) {
+//         case SET_PRODUCTS:
+//             return {
+//                 ...state,
+//                 items: action.payload,
+//                 isFetching: false
+//             }
+//         case SET_IS_FETCH:
+//             return {
+//                 ...state,
+//                 isFetching: action.payload
+//             }
+//        
+//         case SET_CURRENT_SEARCHVALUE:
+//             return {
+//                 ...state,
+//                 searchValue: state.searchValue.filter((prod)=>prod.category === action.payload)
+//             }
+//         case SET_PRODUCTS_CURRENT:
+//             return {
+//                 ...state,
+//                 categoryProducts: state.searchValue.filter((prod)=>prod.category === action.payload) 
+
+//             }
+//         case SET_ALLPRODUCTS_CURRENT:
+//             return {
+//                 ...state,
+//                 categoryProducts: state.items
+
+//             }
+//         case SET_PRODUCT_CATEGORY:
+//             return {
+//                 ...state,
+//                 prodCategory: action.payload
+
+//             }
+//         case SET_SINGLE_CURRENT:
+//             return {
+//                 ...state,
+//                 singleProduct: action.payload
+
+//             }
+//         case SET_IS_ACTIVE:
+//             return {
+//                 ...state,
+//                 isActive: action.payload
+
+//             }
+        
+
+//         default:
+//             return state
+//     }
+
+// }
+
+
+
+
+
+
+
+
+
 
 export const setProducts = (products) => ({
     type: SET_PRODUCTS,
@@ -89,11 +147,7 @@ export const setIsFetching = (bool) => ({
     payload: bool
 
 })
-export const setSearchValue = (text) => ({
-    type: SET_SEARCHVALUE,
-    payload: text
 
-})
 export const setCaregorySearchValue = (category) => ({
     type: SET_CURRENT_SEARCHVALUE,
     payload: category
@@ -119,11 +173,7 @@ export const setProductCategory = (prod) => ({
     payload: prod
 
 })
-// export const setProductCurrentCategory = (prod) => ({
-//     type: SET_PRODUCT_CURRENT_CATEGORY,
-//     payload: prod
 
-// })
 export const setIsActive = (bool) => ({
     type: SET_IS_ACTIVE,
     payload: bool

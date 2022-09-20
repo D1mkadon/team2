@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getCategory } from '../../actions/products';
-import { setIsActive, setProductCategory } from '../../reducers/productsReducer';
+import { setCaregorySearchValue, setIsActive, setProductCategory } from '../../reducers/productsReducer';
 import './CategoryBar.css'
 
 
@@ -31,7 +31,8 @@ const CategoryBar = () => {
                     </div>
                     <div className='listCategory'>
                         {categories.map(cat => 
-                           ( <Link to={`${cat}`}>
+                    
+                    ( <Link onClick={()=>dispatch(setCaregorySearchValue(cat))} to={`${cat}`}>
                             {cat}
                         </Link>)
                         )}
