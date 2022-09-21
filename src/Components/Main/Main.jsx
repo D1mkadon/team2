@@ -9,28 +9,25 @@ import SearchBar from './SearchBar/SearchBar';
 
 const Main = () => {
     const dispatch = useDispatch()
-    const isFetching = useSelector(state=> state.products.isFetching)
+    const isFetching = useSelector(state=> !!state.products.length)
 
 
     useEffect(()=>{
         getProducts()
         .then(json=>{
-            dispatch(setIsFetching(true))
-            dispatch(setProducts(json))
-            return json
-        }).then(json=>{
             dispatch(setSearchValue(json))
         })
     },[])
  
     return (
         <div className={classes.main}>
-            <SearchBar/>
             <CategoryBar/>
             {
-                isFetching ===false 
+                !isFetching 
                 ?
-                <ListPage/>       
+                <div>
+                    <ListPage/>       
+                </div>
                 :
                 <div className={classes.fetching}>
 

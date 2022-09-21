@@ -1,11 +1,8 @@
-.pages{
-  background-color: red;
-}
-
 
 .main{
   display: flex;
   flex-direction: column;
+
 }
 
 .Userinfo{
@@ -19,4 +16,22 @@
   flex-direction: column;
   margin-left: 40px;
   font-size: xx-large;
+}
+
+.btn{
+  text-align: center;
+  margin: 10px 0;
+  border: 1px solid black;
+  background: transparent;
+  width: 150px;
+  padding: 5px 0;
+}
+.btn:hover{
+  text-decoration: underline;
+  color: black;
+
+}
+.btn:active {
+  color: black;
+
 }

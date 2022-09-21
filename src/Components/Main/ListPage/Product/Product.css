@@ -1,4 +1,5 @@
 .item-content{
+    text-align: center;
     width: 150px;
     height: 100%;
     text-decoration: none;
@@ -12,8 +13,22 @@
     color: #282c34;
     padding: 10px ;
     border-radius: 10px;
- box-sizing: border-box;   
+ box-sizing: border-box;  
+ animation-duration: 0.5s;
+    animation-name: bye; 
 }
+@keyframes bye {
+    0%{
+           scale: 0.9;
+       }
+       50%{
+           scale: 0.8;
+   
+       }
+    100%{
+       scale: 1;
+   } 
+   }
 a{
     text-decoration: none;
 }
@@ -34,13 +49,16 @@ a{
 }
 .product-title{
     font-size: 15px;
-    height: 35px;
+    height: 30px;
     overflow: hidden;
 }
-.item-content:hover{
+/* .item-content:hover{
    scale: 1.1;
-}
+} */
 .product-rate{
     width: 100%;
     float: left;
+}
+.product-price{
+    padding-top: 20px;
 }
