@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 import "./Modal.css"
 import style from "../styles.module.css"
 import { useDispatch } from 'react-redux';
-import { setMainName, setMainSurname } from '../../reducers/authDataReducer';
+import { setMainName, setMainSurname, setMainEmail } from '../../reducers/authDataReducer';
+import {setImageUrl} from '../../reducers/imageUploadReducer'
+// import { GoogleLogin } from '@react-oauth/google';
+
+import {useGoogleLogin} from '@react-oauth/google';
+import axios from 'axios';
+// import jwt_decode from "jwt-decode";
 const Modal = ({ active, setActive }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,6 +26,9 @@ const Modal = ({ active, setActive }) => {
   const [surnameError, setSurnameError] = useState("Фамилия не может быть пустая");
 
   const dispatch = useDispatch()
+  const [inputType, setinputType] = useState("password");
+  const [eyeVal, setEyeVal] = useState(false);
+  const [eye, setEye] = useState("https://cdn-icons-png.flaticon.com/512/7615/7615155.png")
 
   const onBlurHandler = (e) => {
     switch (e.target.name) {
@@ -94,9 +103,67 @@ const Modal = ({ active, setActive }) => {
     dispatch(setMainSurname(surname1));
   }
 
+  // const login = useGoogleLogin({
+  //   onSuccess: async response => {
+  //     try{
+  //       const data = await axios.get("http://www.googleapis.com/oauth/v3/userinfo",{
+  //       headers: {
+  //         "Authorezation": `Bearer ${response.access_token}`
+  //       }
+  //     })
+  //     console.log(data)
+  //     } catch(err){
+  //       console.log(err)
+  //     }
+     
+  //   }
+
+  // });
+
+  const login = useGoogleLogin({
+    onSuccess: async respose => {
+        try {
+            const res = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+                headers: {
+                    "Authorization": `Bearer ${respose.access_token}`
+                }
+            })
+            
+              console.log(res.data)
+            // setEmail(res.data.email)
+            // setName(res.data.given_name)
+            // setSurname(res.data.family_name)
+            dispatch(setMainName(res.data.given_name));
+            dispatch(setMainSurname(res.data.family_name));
+            dispatch(setMainEmail(res.data.email));
+            dispatch(setImageUrl(res.data.picture))
+            setActive(false)
+        } catch (err) {
+            console.log(err)
+
+        }
+
+    }
+});
+
+
+
+
+ const setVisiblePassword = () =>{
+  setEyeVal(!eyeVal)
+ 
+  eyeVal ?setEye("https://cdn-icons-png.flaticon.com/512/7615/7615155.png") :  setEye("https://cdn-icons-png.flaticon.com/512/159/159604.png");
+  eyeVal ?setinputType("password") :  setinputType("text");
+
+
   
 
+ }
+
+
+
   useEffect(() => {
+    
     if (emailError || passwordError || nameError || surnameError) {
       setFormValid(false);
     } else {
@@ -112,14 +179,29 @@ const Modal = ({ active, setActive }) => {
           <input value={email} onChange={(e) => emailHandler(e)} onBlur={(e) => onBlurHandler(e)} name='email' type="text" placeholder='Введите свой email' />
 
           {(passwordDirty && passwordError) && <div className={style.red}>{passwordError}</div>}
-          <input value={password} onChange={(e) => passwordHandler(e)} onBlur={(e) => onBlurHandler(e)} name='password' type="password" placeholder='Введите свой пароль' />
-
-          {(nameDirty && nameError) && <div className="red">{nameError}</div>}
+          <div>
+            <input type={inputType} id="password-input" value={password} onChange={(e) => passwordHandler(e)} onBlur={(e) => onBlurHandler(e)} name='password' placeholder='Введите свой пароль' />
+            <img src={eye} onClick={() =>  setVisiblePassword()} height='25px' width='25px' alt='EyeImage'  className="password-control"></img>
+          </div>
+          
+          
+          {(nameDirty && nameError) && <div className={style.red}>{nameError}</div>}
           <input value={name} onChange={(e) => nameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='name' type="text" placeholder='Введите свое имя' />
 
           {(surnameDirty && surnameError) && <div className={style.red}>{surnameError}</div>}
           <input value={surname} onChange={(e) => surnameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='surname' type="text" placeholder='Введите свою фамилию' />
 
+          {/* <GoogleLogin
+              onSuccess={credentialResponse => {
+                console.log(credentialResponse.credential);
+                var decoded = jwt_decode(credentialResponse.credential);
+                console.log(decoded)
+              }}
+              onError={() => {
+                console.log('Login Failed');
+              }}
+          />; */}
+          <button onClick={login} className='google-button'><img src='https://www.pngplay.com/wp-content/uploads/12/Google-PNG-Photos.png' height='25px' width='25px' alt='GoogleImage'></img> Продолжить с Гугла</button>
           <button onClick={() => {setNameAndSurname(name, surname); setActive(false)}} className="submit" disabled={!formValid} type='submit'>Регистрация</button>
           <button onClick={() => setActive(false)} className="submit" type='submit'>Временно для удобства</button>
         </form>

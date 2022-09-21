@@ -1,8 +1,10 @@
 const SET_NAME = "SET_NAME"
 const SET_SURNAME = "SET_SURNAME"
+const SET_EMAIL = "SET_EMAIL"
 const defaulStore = {
     name: "",
-    surname: ""
+    surname: "",
+    email: "",
 }
 
 export default function authDataReducer(state = defaulStore, action) {
@@ -17,6 +19,11 @@ export default function authDataReducer(state = defaulStore, action) {
                 ...state,
                 surname: action.payload
             }
+        case SET_EMAIL:
+            return {
+                ...state,
+                email: action.payload
+            }   
         default:
             return state
     }
@@ -30,5 +37,10 @@ export const setMainName = (name) => ({
 export const setMainSurname = (surname) => ({
     type: SET_SURNAME,
     payload: surname
+
+})
+export const setMainEmail = (email) => ({
+    type: SET_EMAIL,
+    payload: email
 
 })

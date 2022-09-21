@@ -10,6 +10,7 @@ const MyOffice = () => {
   const [modalImage, setModalImage] = useState(false)
   const name = useSelector(state => state.authData.name)
   const surname = useSelector(state => state.authData.surname)
+  // const email = useSelector(state => state.authData.email)
   const imageUrl = useSelector(state => state.imageUrl.imageUrl)
   return (
     <div className={classes.main}>
@@ -28,6 +29,7 @@ const MyOffice = () => {
         <div className={classes.UserName}>
           <p>{name}</p>
           <p>{surname}</p>
+          {/* <p>{email}</p> */}
         </div>
       </div>
 
