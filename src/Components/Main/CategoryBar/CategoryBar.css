@@ -1,8 +1,6 @@
-.category-wrapper{
-    position: absolute;
-    top: 150px;
-    left: 100px;
-
+.CategoryBarWrapper{
+    width: max-content;
+    
 }
 .category-btn{
     width: 153px;
@@ -19,7 +17,7 @@
 }
 .listCategory{
     margin-top: 30px;
-    height: 100px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;

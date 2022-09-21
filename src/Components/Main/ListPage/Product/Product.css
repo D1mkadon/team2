@@ -19,12 +19,11 @@
 }
 @keyframes bye {
     0%{
-           scale: 0.9;
+           scale: 1;
        }
-       50%{
-           scale: 0.8;
-   
-       }
+    75%{
+        scale: 0.75;
+    }
     100%{
        scale: 1;
    } 
@@ -61,4 +60,7 @@ a{
 }
 .product-price{
     padding-top: 20px;
+}
+.btnAddProdItem{
+    width: 100%;
 }

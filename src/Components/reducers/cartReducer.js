@@ -2,12 +2,9 @@
 
 const SET_CART = "SET_CART"
 
-const SET_INCART = "SET_INCART"
 
 
 const REMOVE_ITEM = "REMOVE_ITEM"
-
-const ADD_TOTAL_PRICE = "ADD_TOTAL_PRICE"
 
 const ADD_MORE_PRODUCT = "ADD_MORE_PRODUCT"
 
@@ -15,7 +12,6 @@ const ADD_MORE_PRODUCT = "ADD_MORE_PRODUCT"
 
 const defaulStore = {
     arrOfId: [],
-    inCart:" Add cart",
     totalPrice:0,
     bin:[]
 }
@@ -28,16 +24,8 @@ export default function cartReducer(state = defaulStore, action) {
                 arrOfId: [...state.arrOfId, action.payload]
             }
         
-        case SET_INCART:
-            return {
-                ...state,
-                inCart: action.payload
-        }
-        case ADD_TOTAL_PRICE:
-            return {
-                ...state,
-                totalPrice: state.totalPrice += action.payload
-        }
+  
+      
         case ADD_MORE_PRODUCT:
             return {
                 ...state,
@@ -61,16 +49,7 @@ export const setCartPrice = (id) => ({
 
 })
 
-export const setInCart = (inCart) => ({
-    type: SET_INCART,
-    payload: inCart
 
-})
-export const setAddTotalPrice = (price) => ({
-    type: ADD_TOTAL_PRICE,
-    payload: price
-
-})
 export const setAddMoreProducts = (idProducta , price) => ({
     type: ADD_MORE_PRODUCT,
     payload: idProducta,
