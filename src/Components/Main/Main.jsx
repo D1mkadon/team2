@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../actions/products';
-import { setIsFetching, setProducts } from "../reducers/productsReducer";
-import CategoryBar from './CategoryBar/CategoryBar';
+import { setProducts } from "../reducers/productsReducer";
 import ListPage from './ListPage/ListPage';
 import classes from "./Main.module.css";
 

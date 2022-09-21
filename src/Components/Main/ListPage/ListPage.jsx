@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Product from './Product/Product';
 import SearchBar from '../SearchBar/SearchBar';
 import { useNavigate, useParams } from 'react-router-dom';
-import { setAddMoreProducts, setAddTotalPrice, setCartPrice, setInCart } from '../../reducers/cartReducer';
+import { setAddMoreProducts } from '../../reducers/cartReducer';
 import "./ListPage.css"
 import CustomButton from '../CustomButton/CustomButton';
 import CategoryBar from '../CategoryBar/CategoryBar';

@@ -2,9 +2,7 @@ import React from 'react';
 import './Product.css';
 import { useNavigate } from "react-router-dom";
 import { FaStar } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
 const Product = ({ prod , children }) => {
-    const dispatch= useDispatch();
     const navigate = useNavigate();
     const redirectHandler = () => navigate(`/${prod.category}/${prod.id}`);
 
@@ -12,7 +10,7 @@ const Product = ({ prod , children }) => {
         <div key={prod.id} className='item-content'  >
             <div className='product-rate'>{prod.rating.rate} <FaStar /> </div>
             <div className='img-wrapper' onClick={redirectHandler}>
-                <img className='product-img' src={prod.image} />
+                <img className='product-img' src={prod.image} alt={prod.title} />
             </div>
             <div className='prodAndPrice'>
                 <div className='product-title'>{prod.title}</div>

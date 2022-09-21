@@ -1,5 +1,4 @@
 import { Routes, Route, Link, } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import AboutUs from "./Components/About_us/AboutUs";
 import NotFoundPage from "./Components/Pages/notFoundPage";

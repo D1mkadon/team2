@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import { FaCartPlus } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSingleProducts } from '../../actions/products';
-import { setAddMoreProducts, setCartPrice } from '../../reducers/cartReducer';
-import { setCurrentProduct, setSingleProduct } from '../../reducers/productsReducer';
+import { setAddMoreProducts } from '../../reducers/cartReducer';
+import {  setSingleProduct } from '../../reducers/productsReducer';
 import CustomButton from '../CustomButton/CustomButton';
 import "./SingleProductPage.css"
 
@@ -24,7 +23,7 @@ const SingleProductPage = () => {
         <div className='singleProductWrapper'>
             <div className='headSP'>{currentProduct.title}</div>
             <div className='foroSP'>
-                <img className='fotoSP-img' src={`${currentProduct.image}`} />
+                <img className='fotoSP-img' src={`${currentProduct.image}`} alt={currentProduct.title} />
             </div>
             <div className='price-wrapper'>
             <div className='descSP'>{currentProduct.title} - {currentProduct.description}</div>

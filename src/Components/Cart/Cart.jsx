@@ -1,16 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Cart.css'
 import { useDispatch, useSelector } from 'react-redux';
 import Product from '../Main/ListPage/Product/Product';
-import { setAddMoreProducts, setAddTotalPrice, setCartPrice, setInCart, setRemoveItem } from '../reducers/cartReducer';
-import { Link } from 'react-router-dom';
+import { setAddMoreProducts, setRemoveItem } from '../reducers/cartReducer';
 import CustomButton from '../Main/CustomButton/CustomButton';
 
 
 const ListOfCardComponent = () => {
   const dispatch = useDispatch();
   const arrOfId = useSelector(state => state.cart.arrOfId);
-  const nameBtn = useSelector(state => state.cart.inCart);
   const products = useSelector(state=> state.products.items);
   const totalPrice = useSelector(state=> state.cart.totalPrice);
   const currentCard = products.filter((item) => arrOfId.includes(item.id));
