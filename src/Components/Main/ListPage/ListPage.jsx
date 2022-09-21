@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, {  useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Product from './Product/Product';
 import SearchBar from '../SearchBar/SearchBar';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { FaCartPlus } from 'react-icons/fa';
+import { useNavigate, useParams } from 'react-router-dom';
 import { setAddMoreProducts, setAddTotalPrice, setCartPrice, setInCart } from '../../reducers/cartReducer';
 import "./ListPage.css"
 import CustomButton from '../CustomButton/CustomButton';
+import CategoryBar from '../CategoryBar/CategoryBar';
 
 const ListPage = () => {
     const {category}= useParams()
@@ -21,7 +21,7 @@ const ListPage = () => {
         filteredItems = product.filter(item => item.title.toLowerCase().includes(searchedValue));
         if(category) filteredItems = filteredItems.filter(item => item.category === category);
         return sortByRating(filteredItems);
-     }, [product, searchedValue]);
+     }, [product, searchedValue, category]);
     
 
     function sortByRating(arr){
@@ -34,33 +34,43 @@ const ListPage = () => {
     const goBack = ()=>navigate(-1)
     return (
         <div className='content-products'>
-                    <SearchBar setSearchedValue={setSearchedValue} />
-             {
+            <SearchBar setSearchedValue={setSearchedValue} />
+            <div className='filter'>
+                <CategoryBar/>
+                <div className='listOfProductsItem'>
+                 {
                  category
                  ? 
+                 <>
+                 
                  <div className='btn-and-products'>
                     <button className='list-btn' onClick={goBack}>Go back</button>
                     {
                         
                         filterItemsAndSort.map(product=>
                             <div >
-                                <Product prod={product}/>
-                                <CustomButton clickHandler={() =>dispatch(setAddMoreProducts(product.id , product.price)) } />
+                                <Product prod={product}>
+                                 <CustomButton  clickHandler={() =>dispatch(setAddMoreProducts(product.id , product.price)) } />
+                                </Product>
                            </div>  
                         )
 
                     }
                  </div>
+                 </>
                 :
                 filterItemsAndSort.map(product=>
                     <div>
-                        <Product prod={product}/>
-                        <CustomButton clickHandler={() =>dispatch(setAddMoreProducts(product.id , product.price)) } />
+                        <Product prod={product}>
+                            <CustomButton clickHandler={() =>dispatch(setAddMoreProducts(product.id , product.price)) } />
+                        </Product>
                    </div>  
                     )
                
                 
                 }
+                </div>
+            </div>
         </div>
     );
 };

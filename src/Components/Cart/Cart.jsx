@@ -11,7 +11,7 @@ const ListOfCardComponent = () => {
   const dispatch = useDispatch();
   const arrOfId = useSelector(state => state.cart.arrOfId);
   const nameBtn = useSelector(state => state.cart.inCart);
-  const products = useSelector(state=> state.products.item);
+  const products = useSelector(state=> state.products.items);
   const totalPrice = useSelector(state=> state.cart.totalPrice);
   const currentCard = products.filter((item) => arrOfId.includes(item.id));
   
@@ -33,9 +33,10 @@ const ListOfCardComponent = () => {
                     <div className='totalPrice'>
                       Total price: {totalPrice.toFixed(2)}
                     </div>
-                      <Product prod={product}/>
-                    <CustomButton title = "Delete" clickHandler={() =>dispatch(setRemoveItem(product.id , product.price)) } />
-                    <CustomButton  clickHandler={() =>dispatch(setAddMoreProducts(product.id , product.price)) } />
+                      <Product prod={product}>
+                        <CustomButton title = "Delete" clickHandler={() =>dispatch(setRemoveItem(product.id , product.price)) } />
+                        <CustomButton  clickHandler={() =>dispatch(setAddMoreProducts(product.id , product.price)) } />
+                      </Product>
 
                 </div>
             )

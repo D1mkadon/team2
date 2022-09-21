@@ -1,17 +1,20 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setAddMoreProducts, setAddTotalPrice, setCartPrice } from '../../reducers/cartReducer';
+import { useDispatch } from 'react-redux';
 import './CustomButton.css'
-const CustomButton = ({ prod, clickHandler, title = 'Add' }) => {
+const CustomButton = ({ clickHandler, title = 'Add to cart' }) => {
     const dispatch = useDispatch();
-    // const buttonName = useSelector(state => state.cart.inCart)
+   
+    const btnBgClassName = title === "Add to cart" ? "customBtnAdd" : "customBtnRemove";
+    const btnClasses = [ "customBtn ", btnBgClassName ]
 
     return (
         <input 
         type="button" 
         value={title} 
-        className='customBtn' 
-        onClick={clickHandler}
+        className={btnClasses.join(" ")} 
+        onClick={
+            clickHandler
+        }
         /> 
     );
 };

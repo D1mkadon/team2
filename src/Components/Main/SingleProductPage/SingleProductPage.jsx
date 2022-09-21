@@ -3,13 +3,14 @@ import { FaCartPlus } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSingleProducts } from '../../actions/products';
-import { setCartPrice } from '../../reducers/cartReducer';
+import { setAddMoreProducts, setCartPrice } from '../../reducers/cartReducer';
 import { setCurrentProduct, setSingleProduct } from '../../reducers/productsReducer';
+import CustomButton from '../CustomButton/CustomButton';
 import "./SingleProductPage.css"
 
 const SingleProductPage = () => {
-    const {id} = useParams()
     const dispatch = useDispatch()
+    const {id} = useParams()
     // sp - single product
     useEffect(()=>{
         getSingleProducts(id)
@@ -18,17 +19,21 @@ const SingleProductPage = () => {
         })
     },[])
     const currentProduct = useSelector(state=> state.products.singleProduct)
+    console.log(currentProduct);
     return (
         <div className='singleProductWrapper'>
             <div className='headSP'>{currentProduct.title}</div>
             <div className='foroSP'>
                 <img className='fotoSP-img' src={`${currentProduct.image}`} />
             </div>
+            <div className='price-wrapper'>
             <div className='descSP'>{currentProduct.title} - {currentProduct.description}</div>
             <div className='priceSP'>
                 <div>{currentProduct.price}<span>$</span></div>
-                <button onClick={()=> dispatch(setCartPrice(+currentProduct.id))}><FaCartPlus/>Add to cart </button>    
+                <CustomButton  clickHandler={() =>dispatch(setAddMoreProducts(currentProduct.id , currentProduct.price)) } />
             </div> 
+
+            </div>
             
             
         </div>

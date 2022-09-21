@@ -9,7 +9,7 @@ import classes from "./Main.module.css";
 const Main = () => {
     const dispatch = useDispatch()
     const isFetching = useSelector(state=> !!state.products.isFetching)
-
+console.log(isFetching);
 
     useEffect(()=>{
         getProducts()
@@ -20,7 +20,7 @@ const Main = () => {
  
     return (
         <div className={classes.main}>
-            <CategoryBar/>
+            {/* <CategoryBar/> */}
             {
                 !isFetching 
                 ?

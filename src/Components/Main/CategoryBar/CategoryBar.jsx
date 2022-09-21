@@ -21,7 +21,7 @@ const CategoryBar = () => {
     
     
     return (
-        <div className='category-wrapper'>
+        <div className='CategoryBarWrapper'>
             {
                 isActive
                 ?
@@ -32,7 +32,7 @@ const CategoryBar = () => {
                     <div className='listCategory'>
                         {categories.map(cat => 
                     
-                    ( <Link onClick={()=>dispatch(setCaregorySearchValue(cat))} to={`${cat}`}>
+                    ( <Link onClick={()=>dispatch(setCaregorySearchValue(cat))} to={`/${cat}`}>
                             {cat}
                         </Link>)
                         )}
