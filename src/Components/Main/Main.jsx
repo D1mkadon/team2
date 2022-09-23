@@ -19,7 +19,6 @@ console.log(isFetching);
  
     return (
         <div className={classes.main}>
-            {/* <CategoryBar/> */}
             {
                 !isFetching 
                 ?
