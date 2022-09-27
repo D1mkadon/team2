@@ -14,20 +14,8 @@
     padding: 10px ;
     border-radius: 10px;
  box-sizing: border-box;  
- animation-duration: 0.5s;
-    animation-name: bye; 
+ 
 }
-@keyframes bye {
-    0%{
-           scale: 1;
-       }
-    75%{
-        scale: 0.75;
-    }
-    100%{
-       scale: 1;
-   } 
-   }
 a{
     text-decoration: none;
 }

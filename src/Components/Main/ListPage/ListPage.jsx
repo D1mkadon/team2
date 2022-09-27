@@ -7,6 +7,7 @@ import { setAddMoreProducts } from '../../reducers/cartReducer';
 import "./ListPage.css"
 import CustomButton from '../CustomButton/CustomButton';
 import CategoryBar from '../CategoryBar/CategoryBar';
+import { v4 as uuidv4 } from 'uuid';
 
 const ListPage = () => {
     const {category}= useParams()
@@ -49,7 +50,7 @@ const ListPage = () => {
                         
                         filterItemsAndSort.map(product=>
                             <div >
-                                <Product prod={product}>
+                                <Product key={uuidv4()} prod={product}>
                                  <CustomButton  clickHandler={() =>dispatch(setAddMoreProducts(product.id , product.price)) } />
                                 </Product>
                            </div>  
@@ -61,7 +62,7 @@ const ListPage = () => {
                 :
                 filterItemsAndSort.map(product=>
                     <div>
-                        <Product prod={product}>
+                        <Product key={uuidv4()} prod={product}>
                             <CustomButton clickHandler={() =>dispatch(setAddMoreProducts(product.id , product.price)) } />
                         </Product>
                    </div>  

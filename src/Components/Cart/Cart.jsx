@@ -1,9 +1,7 @@
 import React from 'react';
 import './Cart.css'
 import { useDispatch, useSelector } from 'react-redux';
-import Product from '../Main/ListPage/Product/Product';
-import { setAddMoreProducts, setRemoveItem } from '../reducers/cartReducer';
-import CustomButton from '../Main/CustomButton/CustomButton';
+import CartWithProducts from './CartWithProducts/CartWithProducts';
 
 
 const ListOfCardComponent = () => {
@@ -26,17 +24,7 @@ const ListOfCardComponent = () => {
             </div>
           :
             currentCard.map(product =>
-              //TODO: create another component
-               <div>
-                    <div className='totalPrice'>
-                      Total price: {totalPrice.toFixed(2)}
-                    </div>
-                      <Product prod={product}>
-                        <CustomButton title = "Delete" clickHandler={() =>dispatch(setRemoveItem(product.id , product.price)) } />
-                        <CustomButton  clickHandler={() =>dispatch(setAddMoreProducts(product.id , product.price)) } />
-                      </Product>
-
-                </div>
+              <CartWithProducts product={product}/>
             )
         }
     </div>

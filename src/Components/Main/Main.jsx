@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../actions/products';
+import { products } from '../Data/Data';
 import { setProducts } from "../reducers/productsReducer";
 import ListPage from './ListPage/ListPage';
 import classes from "./Main.module.css";
@@ -8,13 +9,14 @@ import classes from "./Main.module.css";
 const Main = () => {
     const dispatch = useDispatch()
     const isFetching = useSelector(state=> !!state.products.isFetching)
-console.log(isFetching);
+
 
     useEffect(()=>{
-        getProducts()
-        .then(json=>{
-            dispatch(setProducts(json))
-        })
+        // getProducts()
+        // .then(json=>{
+        //     dispatch(setProducts(json))
+        // })
+        dispatch(setProducts(products))
     },[])
  
     return (
