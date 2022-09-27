@@ -18,7 +18,6 @@ const SingleProductPage = () => {
         })
     },[])
     const currentProduct = useSelector(state=> state.products.singleProduct)
-    console.log(currentProduct);
     return (
         <div className='singleProductWrapper'>
             <div className='headSP'>{currentProduct.title}</div>

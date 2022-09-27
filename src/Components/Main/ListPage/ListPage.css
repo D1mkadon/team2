@@ -33,10 +33,10 @@
 .filter{
     display: flex;
     width:100%;
-    justify-content: space-around;
+    gap: 30px;
 }
 .listOfProductsItem{
-    width: 60%;
+    width: 100%;
     flex-wrap: wrap;
     gap: 25px;
     display: flex;
