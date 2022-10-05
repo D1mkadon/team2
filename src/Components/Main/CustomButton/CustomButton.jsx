@@ -1,8 +1,7 @@
 import React from 'react';
 import './CustomButton.css'
-const CustomButton = ({ clickHandler, title = 'Add to cart' }) => {
-   
-    const btnBgClassName = title === "Add to cart" ? "customBtnAdd" : "customBtnRemove";
+const CustomButton = ({ clickHandler, isTrue = true,title = 'Add to cart' }) => {
+    const btnBgClassName = isTrue ? "customBtnAdd" : "customBtnRemove";
     const btnClasses = [ "customBtn ", btnBgClassName ]
 
     return (

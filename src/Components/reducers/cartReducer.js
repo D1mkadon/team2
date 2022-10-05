@@ -1,13 +1,9 @@
-
-
 const SET_CART = "SET_CART"
-
-
-
+const SET_DISCART = "SET_DISCART"
 const REMOVE_ITEM = "REMOVE_ITEM"
-
 const ADD_MORE_PRODUCT = "ADD_MORE_PRODUCT"
-
+const SET_CHECK = "SET_CHECK"
+const CLEAR_REDUCER = "CLEAR_REDUCER"
 
 
 const defaulStore = {
@@ -23,8 +19,16 @@ export default function cartReducer(state = defaulStore, action) {
                 ...state,
                 arrOfId: [...state.arrOfId, action.payload]
             }
-        
-  
+        case SET_DISCART:
+            return {
+                ...state,
+                totalPrice: state.totalPrice += - ((state.totalPrice * action.payload ) / 100)
+            }
+        case SET_CHECK:
+            return {
+                ...state,
+                totalPrice: state.totalPrice < 0 ? state.totalPrice = 0 : state.totalPrice
+            }
       
         case ADD_MORE_PRODUCT:
             return {
@@ -36,7 +40,13 @@ export default function cartReducer(state = defaulStore, action) {
             return {
                 ...state,
                 bin: state.arrOfId.splice((state.arrOfId.indexOf(action.payload)),1),
-                totalPrice: state.totalPrice - action.total
+                totalPrice:  state.totalPrice - action.total
+        }
+        case CLEAR_REDUCER:
+            return {
+             arrOfId: [],
+             totalPrice:0,
+             bin:[]
         }
 
         default:
@@ -46,6 +56,16 @@ export default function cartReducer(state = defaulStore, action) {
 export const setCartPrice = (id) => ({
     type: SET_CART,
     payload: id
+
+})
+export const setTotalPriceDiscount = (discount) => ({
+    type: SET_DISCART,
+    payload: discount
+
+})
+export const setCheckArrAndTotal = () => ({
+    type: SET_CHECK,
+    
 
 })
 
@@ -60,5 +80,9 @@ export const setRemoveItem = (index , price) => ({
     type: REMOVE_ITEM,
     payload: index,
     total: price,
+
+})
+export const setClearReducer = () => ({
+    type: CLEAR_REDUCER,
 
 })

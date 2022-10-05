@@ -5,6 +5,9 @@ import thunk from 'redux-thunk';
 import authDataReducer from './authDataReducer';
 import cartReducer from './cartReducer';
 import imageUploadReducer from './imageUploadReducer';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
 
 const rootReducer = combineReducers({
     products: productsReducer,
@@ -12,5 +15,14 @@ const rootReducer = combineReducers({
     cart: cartReducer,
     imageUrl: imageUploadReducer
 }
-)
-export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+);
+
+const persistConfig = {
+    key: 'root',
+    storage,
+  };
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(thunk)));
+export const persistor = persistStore(store);

@@ -7,17 +7,9 @@ import ListPage from './ListPage/ListPage';
 import classes from "./Main.module.css";
 
 const Main = () => {
-    const dispatch = useDispatch()
     const isFetching = useSelector(state=> !!state.products.isFetching)
-
-
-    useEffect(()=>{
-        // getProducts()
-        // .then(json=>{
-        //     dispatch(setProducts(json))
-        // })
-        dispatch(setProducts(products))
-    },[])
+    
+    
  
     return (
         <div className={classes.main}>
