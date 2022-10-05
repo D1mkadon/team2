@@ -9,9 +9,12 @@
 }
 .totalPrice{
     position: absolute;
-    left: 100%;
-    width: 120px;
+    left: 98%;
+    width: max-content;
     outline: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     padding: 10px;
 }
 .emptyCart{
@@ -30,5 +33,18 @@
     font-size: 22px;
     font-weight: 700;
     padding-bottom: 30px;
+}
+.cartProd-Wrapper{
+    width: 70%;
+}
+
+.orderBtn{
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 10px;
+    padding: 3px 0;
+}
+.orderBtn:hover{
+    background-color: rgb(244, 244, 167);
 }
 
