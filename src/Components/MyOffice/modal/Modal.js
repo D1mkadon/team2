@@ -104,7 +104,6 @@ const Modal = ({ active, setActive }) => {
     dispatch(setIsLogin(islogin));
     dispatch(setMainPassword(password1));
   }
-
   // const login = useGoogleLogin({
   //   onSuccess: async response => {
   //     try{
@@ -143,30 +142,16 @@ const Modal = ({ active, setActive }) => {
             setActive(false)
         } catch (err) {
             console.log(err)
-
         }
-
     }
 });
-
-
-
-
  const setVisiblePassword = () =>{
   setEyeVal(!eyeVal)
- 
   eyeVal ?setEye("https://cdn-icons-png.flaticon.com/512/7615/7615155.png") :  setEye("https://cdn-icons-png.flaticon.com/512/159/159604.png");
   eyeVal ?setinputType("password") :  setinputType("text");
-
-
-  
-
  }
 
-
-
   useEffect(() => {
-    
     if (emailError || passwordError || nameError || surnameError) {
       setFormValid(false);
     } else {
@@ -177,22 +162,22 @@ const Modal = ({ active, setActive }) => {
     <div className={active ? "modal active" : "modal"} >
       <div className={active ? "modal_content active" : "modal_content"} onClick={e => e.stopPropagation()}>
         <form onClick={(e) => preventHandler(e)} >
-          <h1 className="test">Регистрация</h1>
-          {(emailDirty && emailError) && <div className={style.red}>{emailError}</div>}
-          <input value={email} onChange={(e) => emailHandler(e)} onBlur={(e) => onBlurHandler(e)} name='email' type="text" placeholder='Введите свой email' />
+          <h1 className={style.test}>Регистрация</h1>
+          {(emailDirty && emailError) && <div className={style.error}>{emailError}</div>}
+          <input value={email} onChange={(e) => emailHandler(e)} onBlur={(e) => onBlurHandler(e)} className="modal-input" name='email' type="text" placeholder='Введите свой email' />
 
-          {(passwordDirty && passwordError) && <div className={style.red}>{passwordError}</div>}
-          <div>
-            <input type={inputType} id="password-input" value={password} onChange={(e) => passwordHandler(e)} onBlur={(e) => onBlurHandler(e)} name='password' placeholder='Введите свой пароль' />
-            <img src={eye} onClick={() =>  setVisiblePassword()} height='25px' width='25px' alt='EyeImage'  className="password-control"></img>
+          {(passwordDirty && passwordError) && <div className={style.error}>{passwordError}</div>}
+          <div className='register-password'>
+            <input type={inputType} id="password-input" value={password} onChange={(e) => passwordHandler(e)} onBlur={(e) => onBlurHandler(e)} className="modal-input" name='password' placeholder='Введите свой пароль' />
+            <img src={eye} onClick={() =>  setVisiblePassword()} height='45px' width='45px' alt='EyeImage'  className="password-control"></img>
           </div>
           
-          
-          {(nameDirty && nameError) && <div className={style.red}>{nameError}</div>}
-          <input value={name} onChange={(e) => nameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='name' type="text" placeholder='Введите свое имя' />
+    
+          {(nameDirty && nameError) && <div className={style.error}>{nameError}</div>}
+          <input value={name} onChange={(e) => nameHandler(e)} onBlur={(e) => onBlurHandler(e)} className="modal-input" name='name' type="text" placeholder='Введите свое имя' />
 
-          {(surnameDirty && surnameError) && <div className={style.red}>{surnameError}</div>}
-          <input value={surname} onChange={(e) => surnameHandler(e)} onBlur={(e) => onBlurHandler(e)} name='surname' type="text" placeholder='Введите свою фамилию' />
+          {(surnameDirty && surnameError) && <div className={style.error}>{surnameError}</div>}
+          <input value={surname} onChange={(e) => surnameHandler(e)} onBlur={(e) => onBlurHandler(e)} className="modal-input" name='surname'  type="text" placeholder='Введите свою фамилию' />
 
           {/* <GoogleLogin
               onSuccess={credentialResponse => {
@@ -206,7 +191,7 @@ const Modal = ({ active, setActive }) => {
           />; */}
           <button onClick={login} className='google-button'><img src='https://www.pngplay.com/wp-content/uploads/12/Google-PNG-Photos.png' height='25px' width='25px' alt='GoogleImage'></img> Продолжить с Гугла</button>
           <button onClick={() => {setUserData(name, surname, password, true); setActive(false)}} className="submit" disabled={!formValid} type='submit'>Регистрация</button>
-          <button onClick={() => setActive(false)} className="submit" type='submit'>Временно для удобства</button>
+          <button onClick={() => setActive(false)} className="submit" type='submit'>Отменить регистрацию</button>
         </form>
       </div>
     </div>

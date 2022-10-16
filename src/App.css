@@ -82,3 +82,18 @@ main{
         padding: 5px 10px;
     }
 }
+
+.button-regist{
+    border: 5px inset rgb(24, 25, 32);
+    height: 40px;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.button-regist:hover{
+    background-color: rgb(31, 161, 212);
+}
