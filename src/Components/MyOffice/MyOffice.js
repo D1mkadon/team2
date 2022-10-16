@@ -1,28 +1,49 @@
 import React, { useState } from 'react';
-import "./MyOffice.css"
-import Modal from './modal/Modal';
-
+import {Link, NavLink, useNavigate} from "react-router-dom";
+import classes from "./MyOffice.module.css"
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import Modal from "./modal/Modal"
+import ImageUpload from './ImageUpload/imageUpload';
+import Main from '../Main/Main';
+import { setMainName, setMainSurname,  setIsLogin } from '../reducers/authDataReducer'
 const MyOffice = () => {
-  const[modalActive, setModalActive] = useState(true)
+  const [modalImage, setModalImage] = useState(false)
+  const name = useSelector(state => state.authData.name)
+  const surname = useSelector(state => state.authData.surname)
+  const islogin = useSelector(state => state.authData.islogin)
+  const imageUrl = useSelector(state => state.imageUrl.imageUrl)
+  const [modalActive, setModalActive] = useState(!islogin)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const goBack = ()=>navigate(-1)
+  function setQuit(){
+    dispatch(setMainName(""));
+    dispatch(setMainSurname(""));
+    dispatch(setIsLogin(false));
+  }
   return (
-    <div className='Main'>
+    <div className={classes.main}>
       {/* Modal_Window */}
       <Modal active={modalActive} setActive={setModalActive}></Modal>
-      {/* Else */}git branch -M main
-        <div className='pages'><button onClick={() => setModalActive(true)}>Зарегестрироватся </button></div>
-        <div className='User-info'>
-          <img src='https://citaty.info/files/no_avatar.png' height={"200px"} width={"200px"} alt='Avatarka'></img>
-          
-          <div className='User-name'>
-            <p>Name</p>
-            <p>Surname</p>
-          </div>
+      <ImageUpload activeImage={modalImage} setModalImage={setModalImage}></ImageUpload>
+      {/* Else */}
+      <div>
+        <div className={classes.divsPosition}>
+            <img className={classes.imgAvatarka} src={imageUrl} height={"200px"} width={"200px"} alt='Avatarka'></img>
+            <div className='pages'><button className={classes.buttonRedistrationAvatarka} onClick={()=> setModalImage(true)}>Загрузить аватар</button></div>
+            <div><button className={classes.buttonRedistration} onClick={() => {setModalActive(!islogin); {setQuit(); goBack()}}}>{islogin ? "Выйти"  : "Зарегестрироватся"}</button></div>
         </div>
+            
+          <div className='User-info'>
 
-
-
-
-
+          </div>
+    
+          <div className={classes.UserName}>
+            <p>{name}</p>
+            <p>{surname}</p>
+          </div>
+      </div>
     </div>
   );
 };
