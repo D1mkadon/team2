@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "./Modal.css"
 import style from "../styles.module.css"
 import { useDispatch } from 'react-redux';
-import { setMainName, setMainSurname, setMainEmail } from '../../reducers/authDataReducer';
+import { setMainName, setMainSurname, setMainEmail, setIsLogin, setMainPassword } from '../../reducers/authDataReducer';
 import {setImageUrl} from '../../reducers/imageUploadReducer'
 // import { GoogleLogin } from '@react-oauth/google';
 
@@ -98,9 +98,11 @@ const Modal = ({ active, setActive }) => {
   const preventHandler = (e) => {
     e.preventDefault()
   }
-  function setNameAndSurname(name1, surname1) {
+  function setUserData(name1, surname1, password1, islogin) {
     dispatch(setMainName(name1));
     dispatch(setMainSurname(surname1));
+    dispatch(setIsLogin(islogin));
+    dispatch(setMainPassword(password1));
   }
 
   // const login = useGoogleLogin({
@@ -136,6 +138,7 @@ const Modal = ({ active, setActive }) => {
             dispatch(setMainName(res.data.given_name));
             dispatch(setMainSurname(res.data.family_name));
             dispatch(setMainEmail(res.data.email));
+            dispatch(setIsLogin(true));
             dispatch(setImageUrl(res.data.picture))
             setActive(false)
         } catch (err) {
@@ -202,7 +205,7 @@ const Modal = ({ active, setActive }) => {
               }}
           />; */}
           <button onClick={login} className='google-button'><img src='https://www.pngplay.com/wp-content/uploads/12/Google-PNG-Photos.png' height='25px' width='25px' alt='GoogleImage'></img> Продолжить с Гугла</button>
-          <button onClick={() => {setNameAndSurname(name, surname); setActive(false)}} className="submit" disabled={!formValid} type='submit'>Регистрация</button>
+          <button onClick={() => {setUserData(name, surname, password, true); setActive(false)}} className="submit" disabled={!formValid} type='submit'>Регистрация</button>
           <button onClick={() => setActive(false)} className="submit" type='submit'>Временно для удобства</button>
         </form>
       </div>

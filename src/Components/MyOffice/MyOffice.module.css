@@ -2,7 +2,7 @@
 .main{
   display: flex;
   flex-direction: column;
-
+  margin: 0;
 }
 
 .Userinfo{
@@ -34,4 +34,39 @@
 .btn:active {
   color: black;
 
+}
+
+.buttonRedistration{
+  margin-left: 50px;
+  margin-top: 50px;
+  background-color: rgb(221, 29, 195);
+  align-items: center;
+  justify-content: center;
+  height:60px;
+  width: 200px;
+  border: 1px solid black;
+  color: black;
+  font-weight: 900;
+  font-size: large;
+}
+.buttonRedistrationAvatarka{
+  margin-top: 50px;
+  background-color: rgb(221, 29, 195);
+  align-items: center;
+  justify-content: center;
+  height:60px;
+  width: 200px;
+  border: 1px solid black;
+  color: black;
+  font-weight: 900;
+  font-size: large;
+}
+.imgAvatarka{
+  margin-top: 50px;
+  margin-right: 100px;
+}
+
+.divsPosition{
+  display: flex;
+  flex-direction: row;
 }
