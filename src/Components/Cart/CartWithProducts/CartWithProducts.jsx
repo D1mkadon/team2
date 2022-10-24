@@ -1,4 +1,3 @@
-import { logDOM } from '@testing-library/react';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomButton from '../../Main/CustomButton/CustomButton';
@@ -8,11 +7,10 @@ import "./CartWithProducts.css"
 
 const CartWithProducts = ({product}) => {
     const dispatch = useDispatch();
-  const totalPrice = useSelector(state=> state.cart.totalPrice);
   const arrOfId = useSelector(state => state.cart.arrOfId);
     let arr =[];
    for (const i of arrOfId) {
-        if (i == product.id) {
+        if (i === product.id) {
             arr.push(i)
         }
 }

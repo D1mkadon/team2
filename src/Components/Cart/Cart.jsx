@@ -4,12 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import CartWithProducts from './CartWithProducts/CartWithProducts';
 import {DiscountModal} from './DiscountModal/DiscountModal'
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { setCheckArrAndTotal } from '../reducers/cartReducer';
 
 const ListOfCardComponent = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
   const arrOfId = useSelector(state => state.cart.arrOfId);
   const totalPrice = useSelector(state=> state.cart.totalPrice);
   const products = useSelector(state=> state.products.items);
@@ -30,9 +29,13 @@ const ListOfCardComponent = () => {
             <img src="https://media.istockphoto.com/vectors/empty-shopping-bag-icon-online-business-vector-icon-template-vector-id861576608?k=20&m=861576608&s=612x612&w=0&h=UgHaPYlYrsPTO6BKKTzizGQqFgqEnn7eYK9EOA16uDs=" alt="" />
             </div>
           :
-            currentCard.map(product =>
-              <CartWithProducts product={product}/>
-            )
+          <div className='productWrapper'>
+            {
+              currentCard.map(product =>
+                <CartWithProducts product={product}/>
+              )
+            }
+          </div>
             
         }
           <div className='totalPrice'>

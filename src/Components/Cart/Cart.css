@@ -3,19 +3,25 @@
     margin-top: 50px;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
+    justify-content: space-around;
 }
 .totalPrice{
-    position: absolute;
-    left: 98%;
+  
     width: max-content;
+    height: 70px;
     outline: 1px solid black;
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 10px;
+}
+.productWrapper{
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 14px;
 }
 .emptyCart{
     width: 100%;

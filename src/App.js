@@ -11,10 +11,9 @@ import ListPage from "./Components/Main/ListPage/ListPage";
 import Cart from './Components/Cart/Cart'
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "./Components/reducers/productsReducer";
-import { products } from "./Components/Data/Data";
 import { OrderPage } from "./Components/OrderPage/OrderPage";
-import { setIsLogin } from "./Components/reducers/authDataReducer";
 import OrderFinalyPage from "./Components/OrderPage/OrderItem/OrderForm/OrderFinalyPage/OrderFinalyPage";
+import { getProducts } from "./Components/actions/products";
 // import FooterDescription from "./Components/FooterDescription/FooterDescription";
 // import AboutUsSocial from "./Components/About_us/aboutUsSocial/AboutUsSocial";
 function App() {
@@ -22,14 +21,12 @@ function App() {
   
   const islogin = useSelector(state => state.authData.islogin)
   const [modalActive, setModalActive] = useState(false)
-  console.log(islogin)
     useEffect (()=>{
-        // getProducts()
-        // .then(json=>{
-        //     dispatch(setProducts(json))
-        // })
-        dispatch(setProducts(products))
-    },[])
+        getProducts()
+        .then(json=>{
+            dispatch(setProducts(json))
+        })
+    },[dispatch])
   return (
     <div className="App">
         <div className="wrapper">

@@ -7,6 +7,7 @@ import Modal from "./modal/Modal"
 import ImageUpload from './ImageUpload/imageUpload';
 import Main from '../Main/Main';
 import { setMainName, setMainSurname,  setIsLogin } from '../reducers/authDataReducer'
+import { setClearReducer } from '../reducers/cartReducer';
 const MyOffice = () => {
   const [modalImage, setModalImage] = useState(false)
   const name = useSelector(state => state.authData.name)
@@ -16,7 +17,9 @@ const MyOffice = () => {
   const [modalActive, setModalActive] = useState(!islogin)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const goBack = ()=>navigate(-1)
+  // const goBack = ()=>navigate(-11)
+  const redirectHandler = () => navigate(`/`);
+
   function setQuit(){
     dispatch(setMainName(""));
     dispatch(setMainSurname(""));
@@ -32,7 +35,7 @@ const MyOffice = () => {
         <div className={classes.divsPosition}>
             <img className={classes.imgAvatarka} src={imageUrl} height={"200px"} width={"200px"} alt='Avatarka'></img>
             <div className='pages'><button className={classes.buttonRedistrationAvatarka} onClick={()=> setModalImage(true)}>Загрузить аватар</button></div>
-            <div><button className={classes.buttonRedistration} onClick={() => {setModalActive(!islogin); {setQuit(); goBack()}}}>{islogin ? "Выйти"  : "Зарегестрироватся"}</button></div>
+            <div><button className={classes.buttonRedistration} onClick={() => {setModalActive(!islogin); {setQuit(); redirectHandler();dispatch(setClearReducer())}}}>{islogin ? "Выйти"  : "Зарегестрироватся"}</button></div>
         </div>
             
           <div className='User-info'>
